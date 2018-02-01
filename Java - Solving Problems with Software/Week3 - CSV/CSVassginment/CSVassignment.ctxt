@@ -1,0 +1,23 @@
+#BlueJ class context
+comment0.target=CSVassignment
+comment1.params=parser
+comment1.target=org.apache.commons.csv.CSVRecord\ coldestHourInFile(org.apache.commons.csv.CSVParser)
+comment10.params=
+comment10.target=void\ testAverageTemperatureWithHighHumidityInFile()
+comment2.params=
+comment2.target=void\ testColdestHourInFile()
+comment3.params=
+comment3.target=java.lang.String\ fileWithColdestTemperature()
+comment4.params=
+comment4.target=void\ testFileWithColdestTemperature()
+comment5.params=parser
+comment5.target=org.apache.commons.csv.CSVRecord\ lowestHumidityInFile(org.apache.commons.csv.CSVParser)
+comment6.params=
+comment6.target=void\ testLowestHumidityInFile()
+comment7.params=parser
+comment7.target=double\ averageTemperatureInFile(org.apache.commons.csv.CSVParser)
+comment8.params=
+comment8.target=void\ testAverageTemperatureInFile()
+comment9.params=parser\ value
+comment9.target=double\ averageTemperatureWithHighHumidityInFile(org.apache.commons.csv.CSVParser,\ int)
+numComments=11

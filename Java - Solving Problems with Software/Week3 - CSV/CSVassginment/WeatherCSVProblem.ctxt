@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.target=WeatherCSVProblem
+comment0.text=\r\n\ Created\ by\ white\ on\ 11/18/15.\r\n
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment2.params=parser
+comment2.target=org.apache.commons.csv.CSVRecord\ coldestHourInFile(org.apache.commons.csv.CSVParser)
+comment2.text=\r\n\ Returns\ the\ CSVRecord\ with\ the\ coldest\ temperature\ in\ the\ file\ and\r\n\ thus\ all\ the\ information\ about\ the\ coldest\ temperature\r\n\r\n\ @param\ parser\r\n
+comment3.params=
+comment3.target=java.lang.String\ fileWithColdestTemperature()
+comment3.text=\r\n\ should\ return\ a\ string\ that\ is\ the\ name\ of\ the\ file\r\n\ from\ selected\ files\ that\ has\ the\ coldest\ temperature\r\n
+comment4.params=parser
+comment4.target=org.apache.commons.csv.CSVRecord\ lowestHumidityInFile(org.apache.commons.csv.CSVParser)
+comment4.text=\r\n\ This\ method\ returns\ the\ CSVRecord\ that\ has\ the\ lowest\ humidity\r\n\r\n\ @param\ parser\r\n
+comment5.params=parser
+comment5.target=double\ averageTemperatureInFile(org.apache.commons.csv.CSVParser)
+comment5.text=\r\n\ @param\ parser\r\n\ @return\r\n
+comment6.params=parser\ level
+comment6.target=double\ averageTemperatureWithHighHumidityInFile(org.apache.commons.csv.CSVParser,\ double)
+comment6.text=\r\n\ This\ method\ returns\ a\ double\ that\ represents\ the\ average\ temperature\ of\ only\r\n\ those\ temperatures\ when\ the\ humidity\ was\ greater\ than\ or\ equal\ to\ value\r\n\r\n\ @param\ parser\r\n\ @param\ level\r\n
+numComments=7
