@@ -1,0 +1,569 @@
+WEBVTT
+
+1
+00:00:03.202 --> 00:00:05.679
+Now that you have the basic
+idea of steganography,
+
+2
+00:00:05.679 --> 00:00:08.000
+it's time to learn a bit about binary.
+
+3
+00:00:08.000 --> 00:00:11.300
+So you can do the math on
+the numeric values of pixels.
+
+4
+00:00:11.300 --> 00:00:13.720
+Let's start with a refresher
+on base ten numbers,
+
+5
+00:00:13.720 --> 00:00:16.670
+the normal decimal
+system you use everyday.
+
+6
+00:00:16.670 --> 00:00:21.235
+In a base ten number, the digits
+are in the 1s place, the 10s place,
+
+7
+00:00:21.235 --> 00:00:23.225
+the 100s place, and so on.
+
+8
+00:00:23.225 --> 00:00:28.286
+This means that a number like 8,237 is
+
+9
+00:00:28.286 --> 00:00:35.331
+7*1 plus 3*10 plus 2*100 plus 8*1000.
+
+10
+00:00:35.331 --> 00:00:38.840
+The same principles apply in binary but
+
+11
+00:00:38.840 --> 00:00:42.600
+the places are powers of two
+instead of powers of ten.
+
+12
+00:00:42.600 --> 00:00:46.040
+Computers do this because they
+fundamentally work with electric circuits
+
+13
+00:00:46.040 --> 00:00:50.420
+and transistors which are easiest to
+implement with two voltage levels.
+
+14
+00:00:50.420 --> 00:00:54.600
+So, computers work naturally in a number
+system where you have only two values,
+
+15
+00:00:54.600 --> 00:00:55.985
+ones and zeros.
+
+16
+00:00:55.985 --> 00:01:00.510
+So the binary number 10111,
+
+17
+00:01:00.510 --> 00:01:05.346
+one is 1 * 1 plus 1 * 2 plus 1 * 4
+
+18
+00:01:05.346 --> 00:01:10.182
+plus 0 * 8 plus 1 * 16, which,
+
+19
+00:01:10.182 --> 00:01:15.498
+if you wrote in decimal, would be 23.
+
+20
+00:01:15.498 --> 00:01:20.717
+The red, green, and blue components
+of pixels range from 0 to 255
+
+21
+00:01:20.717 --> 00:01:25.990
+because they are stored with
+eight binary digits called bits.
+
+22
+00:01:25.990 --> 00:01:32.400
+Note that the b in bit comes from binary,
+and the it in bit comes from digit.
+
+23
+00:01:32.400 --> 00:01:36.112
+With eight digits, or eight bits,
+
+24
+00:01:36.112 --> 00:01:40.692
+a number can range from 0000 0000,
+
+25
+00:01:40.692 --> 00:01:44.033
+which is the decimal number 0,
+
+26
+00:01:44.033 --> 00:01:49.260
+to 1111 1111, which is decimal 255.
+
+27
+00:01:49.260 --> 00:01:52.263
+These eight bits are in the 1's place,
+
+28
+00:01:52.263 --> 00:01:57.400
+the 2's place, and so
+on up through the 128's place.
+
+29
+00:01:57.400 --> 00:02:02.416
+If you were to add up all these
+place values, you would get 255.
+
+30
+00:02:02.416 --> 00:02:06.232
+Now that you know that each color
+is an eightbit binary number,
+
+31
+00:02:06.232 --> 00:02:09.720
+let's revisit this steganography problem.
+
+32
+00:02:09.720 --> 00:02:15.299
+You want to hide the eight-bit
+number on the left,
+
+33
+00:02:15.299 --> 00:02:22.710
+10110010 in the number on the right,
+01110101.
+
+34
+00:02:22.710 --> 00:02:27.190
+As before,
+you'll hide the most significant digits.
+
+35
+00:02:27.190 --> 00:02:28.270
+In this case,
+
+36
+00:02:28.270 --> 00:02:33.290
+you use the four digits from each number,
+since that's half of the total digits.
+
+37
+00:02:33.290 --> 00:02:37.250
+The resulting number would be this eight
+bit binary number, where we've colored
+
+38
+00:02:37.250 --> 00:02:41.330
+the bits based on which of the two
+original numbers they came from.
+
+39
+00:02:41.330 --> 00:02:45.460
+The most significant bits from the number
+you want to hide shown in blue
+
+40
+00:02:45.460 --> 00:02:50.470
+are now hidden as the least significant
+bits of the color that will be displayed.
+
+41
+00:02:50.470 --> 00:02:52.760
+That's how you do it conceptually, but
+
+42
+00:02:52.760 --> 00:02:56.390
+how do you pull these numbers apart and
+then put them back together using
+
+43
+00:02:56.390 --> 00:02:59.350
+mathematical operations that
+you can write down in code?
+
+44
+00:03:00.900 --> 00:03:05.660
+Let's again revisit the problem in the
+more familiar context of decimal numbers.
+
+45
+00:03:05.660 --> 00:03:10.320
+Working similar problems in more familiar
+contexts can be a great strategy in
+
+46
+00:03:10.320 --> 00:03:14.940
+general whenever you're approaching
+problems that have unfamiliar concepts.
+
+47
+00:03:14.940 --> 00:03:19.691
+The first question we might ask is,
+how do you extract or
+
+48
+00:03:19.691 --> 00:03:23.644
+get 82, the blue digits out of 8, 274?
+
+49
+00:03:23.644 --> 00:03:27.570
+The number on the left, or
+the 82, is underlined in blue.
+
+50
+00:03:27.570 --> 00:03:31.862
+You could take 8274 and divide by 100.
+
+51
+00:03:31.862 --> 00:03:34.870
+That would give you 82.74.
+
+52
+00:03:34.870 --> 00:03:36.830
+And then throw away the 0.74.
+
+53
+00:03:36.830 --> 00:03:40.710
+The mathematical operation called
+taking the floor of a number,
+
+54
+00:03:40.710 --> 00:03:45.060
+which means rounding it down to the whole
+number, less than or equal to it.
+
+55
+00:03:45.060 --> 00:03:48.850
+In JavaScript, you would do this
+with Math.floor(8274 / 100), and
+
+56
+00:03:48.850 --> 00:03:53.670
+that would give you 82.
+
+57
+00:03:53.670 --> 00:04:00.211
+The same principle works to get the most
+significant two digits of 3,568.
+
+58
+00:04:00.211 --> 00:04:05.375
+Math.floor(3568 / 100) is 35.
+
+59
+00:04:05.375 --> 00:04:09.861
+In fact, you can get rid of the least
+significant digits of any base ten number
+
+60
+00:04:09.861 --> 00:04:14.569
+by dividing by the appropriate power of
+ten and discarding the fractional part.
+
+61
+00:04:15.680 --> 00:04:21.273
+Now that you have 82 and 35, you want
+to put them together to get 3,582,
+
+62
+00:04:21.273 --> 00:04:26.590
+which you can do simply by
+multiplying 35 by 100 and adding 82.
+
+63
+00:04:26.590 --> 00:04:27.230
+In fact,
+
+64
+00:04:27.230 --> 00:04:32.517
+this strategy works to combine any two
+digit numbers into a four digit number.
+
+65
+00:04:32.517 --> 00:04:36.705
+If you wanted to combine numbers
+with more or fewer digits,
+
+66
+00:04:36.705 --> 00:04:40.150
+you would multiply by
+a different power of 10.
+
+67
+00:04:40.150 --> 00:04:44.700
+Now, let's go back to the numbers
+represented in binary.
+
+68
+00:04:44.700 --> 00:04:46.800
+You can apply the same principle but
+
+69
+00:04:46.800 --> 00:04:50.513
+now you'll need to use powers
+of two instead of powers of 10.
+
+70
+00:04:50.513 --> 00:04:55.171
+And since we want to work with four
+digits at a time, we'll use 2 to the 4th,
+
+71
+00:04:55.171 --> 00:04:56.950
+which is 16.
+
+72
+00:04:56.950 --> 00:05:02.825
+So if you took Math.floor(10110010
+
+73
+00:05:02.825 --> 00:05:07.092
+/ 16) you would get 1011.
+
+74
+00:05:07.092 --> 00:05:10.081
+Note that there's nothing really
+special about binary math.
+
+75
+00:05:10.081 --> 00:05:14.221
+Binary numbers are still just numbers,
+in fact,
+
+76
+00:05:14.221 --> 00:05:19.260
+this really is 178 divided
+by 16 which is equal to 11.
+
+77
+00:05:19.260 --> 00:05:23.980
+We just wrote the numbers down
+in binary rather than decimal.
+
+78
+00:05:23.980 --> 00:05:28.030
+Similarly, to get the most significant
+four bits of the other number,
+
+79
+00:05:28.030 --> 00:05:32.190
+you can divide by 16, and
+take Math.floor of the result.
+
+80
+00:05:32.190 --> 00:05:38.260
+In this case,
+you're taking 117 dividing by 16 to get 7.
+
+81
+00:05:38.260 --> 00:05:41.410
+Now, you can combine the two
+different four bit numbers
+
+82
+00:05:41.410 --> 00:05:45.910
+into one eight bit number with the same
+principle we saw before with base 10.
+
+83
+00:05:45.910 --> 00:05:50.610
+But this time, instead of multiplying by
+a 100, you multiply by 16 and then add.
+
+84
+00:05:51.665 --> 00:05:54.480
+That's the math required to
+hide one image in another.
+
+85
+00:05:55.732 --> 00:05:59.480
+But what about the math to
+extract the hidden image?.
+
+86
+00:05:59.480 --> 00:06:03.440
+How do you get the least significant four
+digits out of the number on the right,
+
+87
+00:06:03.440 --> 00:06:04.600
+shown in blue,
+
+88
+00:06:04.600 --> 00:06:08.190
+to make them into the most significant
+four digits of the number on the left?
+
+89
+00:06:09.370 --> 00:06:13.590
+Let's again go back to the more
+familiar base 10 scenario.
+
+90
+00:06:13.590 --> 00:06:20.870
+When you take 3582 and divide by 100,
+you get 35, with a remainder of 82.
+
+91
+00:06:20.870 --> 00:06:26.150
+That 82, the remainder when you divide,
+is exactly what you want.
+
+92
+00:06:26.150 --> 00:06:29.630
+So how to you ask JavaScript to give
+you the remainder that's left over
+
+93
+00:06:29.630 --> 00:06:31.410
+when you use division?
+
+94
+00:06:31.410 --> 00:06:34.782
+You use the percent sign operator,
+show here.
+
+95
+00:06:34.782 --> 00:06:38.555
+3582 % 100 is 82.
+
+96
+00:06:38.555 --> 00:06:43.062
+The percent sign operator is called mod,
+short for modulus,
+
+97
+00:06:43.062 --> 00:06:48.530
+the formal mathematical name for
+the remainder when you divide.
+
+98
+00:06:48.530 --> 00:06:54.830
+So, we'd actually read this
+statement as 3582 mod 100 is 82.
+
+99
+00:06:54.830 --> 00:06:59.707
+Once you have these two digits, you can
+just multiply by 100 to get the number you
+
+100
+00:06:59.707 --> 00:07:04.880
+want, making them the two most significant
+digits of the resulting four digit number.
+
+101
+00:07:05.990 --> 00:07:09.549
+The same principle will work for
+binary digits.
+
+102
+00:07:09.549 --> 00:07:13.440
+But again, you use powers of
+two instead of powers of ten.
+
+103
+00:07:14.650 --> 00:07:20.480
+Since you want four digits, you would use
+2 to the 4th, which is 16, instead of 100.
+
+104
+00:07:20.480 --> 00:07:25.258
+Taking a number mod 16 gives you
+the four least significant or
+
+105
+00:07:25.258 --> 00:07:28.640
+right most bits, the binary digits.
+
+106
+00:07:28.640 --> 00:07:30.750
+In this case, 1011.
+
+107
+00:07:31.800 --> 00:07:35.150
+If you take that number and
+multiply by 16, you
+
+108
+00:07:35.150 --> 00:07:40.080
+end up with these bits as the four most
+significant bits of an eight bit number.
+
+109
+00:07:40.080 --> 00:07:45.280
+You see that the leftmost, or
+most significant bits, are now 1011.
+
+110
+00:07:45.280 --> 00:07:49.843
+That's exactly the math you
+need to extract a hidden image.
+
+111
+00:07:49.843 --> 00:07:53.640
+So now you've seen how numbers
+are represented in binary and
+
+112
+00:07:53.640 --> 00:07:57.734
+how you can extract the digits you
+want from numbers in base 10 or
+
+113
+00:07:57.734 --> 00:08:00.504
+in the base 2 using either division or
+mod.
+
+114
+00:08:00.504 --> 00:08:04.614
+You've seen how you can combine this
+digits back together in either based using
+
+115
+00:08:04.614 --> 00:08:07.100
+multiplication and addition.
+
+116
+00:08:07.100 --> 00:08:11.980
+And you've seen that you can use
+Math.floor to discard the fractional parts
+
+117
+00:08:11.980 --> 00:08:13.760
+after you've divided.
+
+118
+00:08:13.760 --> 00:08:16.388
+We've summarized these
+ideas on this slide.
+
+119
+00:08:16.388 --> 00:08:20.360
+Remember, think about
+numbers in base 10 but
+
+120
+00:08:20.360 --> 00:08:27.010
+do the math in base 2 by using
+powers of 2 instead of powers of 10.
+
+121
+00:08:27.010 --> 00:08:27.900
+Enjoy your programming.

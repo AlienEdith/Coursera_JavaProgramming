@@ -1,0 +1,76 @@
+Okay, we've walked through
+some of the concepts and we told you we would walk you through
+the code to hide one image in another. We've started here with the clear bits
+function which we'd seen before in a previous video which just takes
+the Math.floor of the color value divided by 16 and multiplies
+it by 16 to clear out the lower bit. We've previously talked about
+the chop2hide function, and we've written down here the steps for
+the algorithm for that and
+we're just going to turn those into code. So we need for(var px of Image.values), that's how you've seen to iterate
+over the pixels in an image before. And we want to clear the low bits of
+the red, so px.setRed to (clearbits), this is the function we wrote to
+do the math for us of (px.getRed). So we want to take the current red value call clear bits to zero
+out the lower bits. And then set the red to that new value. We can do the same thing for the green. And the blue. And then when we're finished, our image
+that we've been modifying is the answer to our whole function, that's what we're we
+want to give back to whoever called us. Now, I've got some placeholders for the other functions we're going
+to write here in a second. And, at the bottom here,
+I've got this algorithm that we saw as our high level algorithm where we combine
+chop to hide, shift and combined. So at this point,
+these two functions don't do anything so printing our overall answer is
+not going to do us much good. I'm going to comment these lines out. And instead,
+I'm just going to print start so that we can make sure that works pretty
+well before we do anything else. So if I run this code, I'm working
+with our picture of Ussain Bolt, I get something that looks pretty
+similar as with the previous videos. You can notice that the background
+colors have changed just a little because I've been modifying
+these color values. Great, now let's go work on shift. So remember, this is where we're going to
+take those most significant bits, and move them over to the least significant bit
+position for the image we want to hide. So our algorithm is going to call for us
+to iterate over each Pixel in the image. And what we want to do here is
+to shift over the red bits. So we want to px.setred. And remember we can do
+this by dividing by 16. (Px.get Red / 16) because 16 is 2 to the 4th power that would move everything
+over four binary digits or bits. Now, we want the px.setGreen
+to (px.getGreen () /16). And similarly,
+px.setBlue(px.getBlue() /16). And again we've written
+this little bit of code, we'd like to make sure that it works, or at least look like it
+works before we move on. We're not testing very
+thoroughly in this video, we're going to encourage you to do more
+extensive testing of your own code. So what if we now hide and
+we print out hide? Oops, we left off, if we go back up here,
+we got sort of a weird error message, cannot read property
+'getString' of undefined. What is that mean? Well something was undefined
+that's generally a bad thing. If I go back and look at this,
+I forgot to return my answer, ops. And now we get an image
+that is mostly black. If you remember from before
+that's what we want. We had hidden all of this
+information with significant bits. We can't really see it. Even though we just fixed
+one little compiler error, it was really good that we got that
+fixed before we had a big mess of code where it might have been
+harder to find that problem. Finally, we need this combine function. We want to make a new image,
+we're going to call it answer. It's going to be a new simple
+image of the same size, so we want show.getWidth and show.getHeight. Show is one of the parameters to combine
+the image we want to show up and hide is the other image
+which we want to hide. We're going to assume they're
+the same size right now. That's not very robust. You'll write some code to crop
+the images to be of the same size, then you can work with any images and for each pixel in answer.values, we want
+to get the x and y of that pixel so var x = px.get x(), you should be
+pretty familiar with that by now, and var y = px.get y(),
+again, a familiar thing. We want to get the same pixel,
+showPixel we'll call it, from the show image .getPixel with x,y. And we want the same
+hidePixel hide.getPixel. The same pixel from the hide image,
+and now we want to set px as red to the sum of showPixels
+red plus a hidePixels red. Remember, that's going to
+combine the two together. One of them is going to have the most
+significant four bit set and the other's zero. The other's going to have the least
+significant four bit set, and the other 0, so when they get added together
+we'll get a whole eight bit number. And then we're going to
+do the same thing for green and for blue. And after doing that for each pixel, our
+answer is going to be the image answer. So now I'm going to come down here. I'm going to uncomment
+these last two lines. Get rid of the extra one I wrote. Now we get this image of Hussein Bolt
+that looks like what we expected. Are we sure it's right? Not really,
+we'd want to investigate a little more. We could have just messed up and
+returned our start image somewhere or something like that. We're not going to test terrible
+rigorously in this video. So that would take more time,
+we'd leave that up to you. So with that, I'll leave you with
+one final important question. What would happen if we hid an image of
+a stegosaurus inside of another image? It would be stegasaurusonography.

@@ -1,0 +1,371 @@
+WEBVTT
+
+1
+00:00:03.550 --> 00:00:07.744
+Okay, now you know the big picture of
+steganography as well as the basics
+
+2
+00:00:07.744 --> 00:00:09.530
+of binary math.
+
+3
+00:00:09.530 --> 00:00:12.660
+Now it is time to look into
+putting all of this together.
+
+4
+00:00:12.660 --> 00:00:17.230
+Let's suppose you wanted to hide this
+top image, which has a secret message
+
+5
+00:00:17.230 --> 00:00:20.672
+inside of this bottom image,
+which is a picture of a galaxy.
+
+6
+00:00:20.672 --> 00:00:24.000
+You have already seen how to take
+the eight bit numbers which represent
+
+7
+00:00:24.000 --> 00:00:27.130
+one of the color components,
+red, green, or blue, and
+
+8
+00:00:27.130 --> 00:00:30.530
+hide the most significant
+bits of one in the other.
+
+9
+00:00:30.530 --> 00:00:34.204
+You take the most significant bits
+from the image you want to show up and
+
+10
+00:00:34.204 --> 00:00:38.080
+combine them with the most significant
+bits of the image you want to hide.
+
+11
+00:00:38.080 --> 00:00:41.253
+You've already seen this
+math to make this work, but
+
+12
+00:00:41.253 --> 00:00:46.220
+there's a bit more to this than just
+doing math on one pair of numbers.
+
+13
+00:00:46.220 --> 00:00:49.160
+You need to do this math for each pixel.
+
+14
+00:00:49.160 --> 00:00:53.480
+Iterating through each pixel in an image
+should be quite familiar by now.
+
+15
+00:00:53.480 --> 00:00:58.340
+And you need to do that math for
+the red, green, and blue components.
+
+16
+00:00:58.340 --> 00:01:01.720
+Since you need to do
+the same thing three times,
+
+17
+00:01:01.720 --> 00:01:05.660
+you might think about pulling that
+computation out into a function,
+
+18
+00:01:05.660 --> 00:01:09.700
+allowing you to call the function, rather
+than repeating the code for that task.
+
+19
+00:01:10.970 --> 00:01:14.770
+Speaking of functions,
+since this task is a bit more complex,
+
+20
+00:01:14.770 --> 00:01:18.250
+you might find it useful to break
+it down into a couple functions.
+
+21
+00:01:18.250 --> 00:01:20.980
+We're going to walk you through
+a couple functions that we broke
+
+22
+00:01:20.980 --> 00:01:23.990
+our implementation down into for hiding.
+
+23
+00:01:23.990 --> 00:01:28.620
+First, we made a function called chop2hide
+which is going to take the image
+
+24
+00:01:28.620 --> 00:01:33.640
+we want to show up in the end and
+produce one that looks quite similar.
+
+25
+00:01:33.640 --> 00:01:37.760
+It is going to do the math on each
+color component of each pixel
+
+26
+00:01:37.760 --> 00:01:43.470
+that keeps the most significant bits and
+zeroes out the least significant bits.
+
+27
+00:01:43.470 --> 00:01:47.359
+The algorithm for this function would
+be to iterate over each pixel in
+
+28
+00:01:47.359 --> 00:01:51.193
+the image and do this math to the red,
+green, and blue components.
+
+29
+00:01:51.193 --> 00:01:55.620
+You want to divide by 16,
+take the Math.floor of that result,
+
+30
+00:01:55.620 --> 00:01:58.090
+then multiply by 16.
+
+31
+00:01:58.090 --> 00:02:03.040
+You might want to extract this repetitive
+math out into its own separate function
+
+32
+00:02:03.040 --> 00:02:05.480
+then just call it in each place.
+
+33
+00:02:05.480 --> 00:02:09.120
+The resulting image should look
+pretty much the same as the original
+
+34
+00:02:09.120 --> 00:02:10.730
+as we show here.
+
+35
+00:02:10.730 --> 00:02:12.510
+If you were implementing, testing, and
+
+36
+00:02:12.510 --> 00:02:16.940
+debugging this code, breaking it into
+small pieces like this would be helpful.
+
+37
+00:02:16.940 --> 00:02:21.140
+You can check the result of this one piece
+and make sure it works before moving on.
+
+38
+00:02:22.190 --> 00:02:27.010
+The second function you might write would
+operate on the image you want to hide.
+
+39
+00:02:27.010 --> 00:02:31.300
+We call this shift because it will
+shift the most significant bits over
+
+40
+00:02:31.300 --> 00:02:33.810
+into the least significant bit positions.
+
+41
+00:02:33.810 --> 00:02:41.901
+That is, you would take
+a color value like 10110010,
+
+42
+00:02:41.901 --> 00:02:46.796
+and convert it into 0001011.
+
+43
+00:02:46.796 --> 00:02:51.249
+The 1011 has been shifted from
+the most significant bits to the least
+
+44
+00:02:51.249 --> 00:02:52.490
+significant bits.
+
+45
+00:02:54.170 --> 00:02:58.940
+The algorithm for this would be to iterate
+over each pixel and set the red, green,
+
+46
+00:02:58.940 --> 00:03:03.950
+and blue to the Math.floor of
+the original value divided by 16.
+
+47
+00:03:03.950 --> 00:03:09.430
+If you look at the resulting image here,
+it would look plain black.
+
+48
+00:03:09.430 --> 00:03:12.350
+That is actually a great thing
+since all the information is in
+
+49
+00:03:12.350 --> 00:03:13.990
+the least significant bits.
+
+50
+00:03:13.990 --> 00:03:17.840
+And the most significant bits
+are supposed to be all zero.
+
+51
+00:03:17.840 --> 00:03:20.700
+Again, you could test this
+separately before you move on.
+
+52
+00:03:21.790 --> 00:03:27.470
+The final function, called combine, takes
+two images and adds red to red, green
+
+53
+00:03:27.470 --> 00:03:32.590
+to green, and blue to blue to produce
+the color values of the resulting image.
+
+54
+00:03:32.590 --> 00:03:36.730
+It should look basically
+the same as the original image.
+
+55
+00:03:36.730 --> 00:03:40.181
+Once you have the ideas for
+these three functions,
+
+56
+00:03:40.181 --> 00:03:46.150
+your high level algorithm to hide one
+image in another, looks like this.
+
+57
+00:03:46.150 --> 00:03:51.620
+You just call the functions that we
+discussed and they do all the work.
+
+58
+00:03:51.620 --> 00:03:53.020
+Having seen the algorithms for
+
+59
+00:03:53.020 --> 00:03:56.580
+each of these functions,
+you could translate them into code.
+
+60
+00:03:56.580 --> 00:04:00.340
+For example,
+here is the chop2hide function.
+
+61
+00:04:00.340 --> 00:04:04.930
+You can see here, where we decided to
+pull out the actual math into it's own
+
+62
+00:04:04.930 --> 00:04:09.950
+helper function and call it for each
+of the red, green, and blue components.
+
+63
+00:04:09.950 --> 00:04:13.080
+The other functions to
+hide would be similar.
+
+64
+00:04:13.080 --> 00:04:16.320
+As we discussed, you iterate
+over the pixels of the image and
+
+65
+00:04:16.320 --> 00:04:18.860
+do the math we previously described.
+
+66
+00:04:18.860 --> 00:04:20.930
+What about extraction?
+
+67
+00:04:20.930 --> 00:04:23.450
+How do you get the hidden image back out?
+
+68
+00:04:23.450 --> 00:04:24.980
+We're going to leave that to you.
+
+69
+00:04:24.980 --> 00:04:27.230
+You've already seen the math required.
+
+70
+00:04:27.230 --> 00:04:30.660
+So now, you can use the seven
+steps to develop an algorithm and
+
+71
+00:04:30.660 --> 00:04:32.340
+translate it into code.
+
+72
+00:04:32.340 --> 00:04:35.880
+Start out with step one and
+work on an image with two pixels.
+
+73
+00:04:35.880 --> 00:04:38.410
+Write down numeric values for
+the red, green, and
+
+74
+00:04:38.410 --> 00:04:41.818
+blue, then extract
+the hidden two pixel image.
+
+75
+00:04:41.818 --> 00:04:44.718
+Once you have done that,
+work through steps two,
+
+76
+00:04:44.718 --> 00:04:47.356
+three, and four to develop your algorithm.
+
+77
+00:04:47.356 --> 00:04:50.800
+Then translate it into code,
+test it, and debug it.
+
+78
+00:04:50.800 --> 00:04:51.570
+Happy coding!

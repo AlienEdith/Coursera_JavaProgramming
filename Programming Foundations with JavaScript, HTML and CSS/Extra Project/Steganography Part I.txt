@@ -1,0 +1,87 @@
+Hi, in this lesson, you're going to learn how to use functions
+to implement what is called steganography. Hiding data in an image or
+other digital artifact like an audio file, a software program, or
+any file of zeros and ones. Because steganography is a bit larger
+of a task than previous problems you have solved. It's a great idea to break
+the code down into functions. As you progress through this lesson,
+you'll see some examples where pieces of code are abstracted out
+into separate functions. To simplify the entire solution and
+to avoid repetition of code. The idea behind steganography
+is to take an image, like this image of sprinter Usain Bolt. And hide data like
+another image inside it. Altering the numerical values of the
+pixels of Usain Bolt to encode the hidden image. The key to steganography is to hide the
+data in such a way that nobody can easily tell you've altered the original image. This image on the right is the result
+of hiding a secret message in the first image. Can you tell that it has been altered? If you look really closely, you can see some differences in
+the shading of the background. However, if you were to just look
+at the second image by itself, there is nothing suspicious. It just looks like
+a picture of Usain Bolt. This idea has been around for
+a long time, predating computers. Sending an undetected message has
+been important throughout history. One important modern use
+is to avoid censorship imposed by oppressive governments. You can hide any digital
+information in an image. You could, for example,
+hide a text or HTML file in an image. However, that would take
+a bit more math and a deeper understanding of
+how everything is a number. To keep things simple at first, you'll work with hiding an image
+in another image of the same size. When you are finished with this lesson, you'll be able to find hidden
+meaning in the universe. That is, we're going to walk you
+through not only the concepts, but also the codes to do
+steganographic hiding. Then you will write the code to extract
+the hidden message from an image. For example, you could take
+this picture of a galaxy and extract the message that
+we hid inside of it. Okay, so how do you actually do this? You already know that pixels have red,
+green and blue components which
+numerically represent the color. Is there a big difference between a red
+value of 240 and a red value of 255? They are numerically different,
+but if you look at them, the two of them are pretty similar. The fact that you can't easily tell
+the difference when you change the numerical value slightly is
+the key to hiding data in an image. You can store the hidden data in the least
+significant digits of the color value. And not see much change
+in the resulting color. The least significant digits
+are like the ones and tens places in a three digit number. So you could hide a 15 in
+240 by changing 240 to 255. To do this,
+you're going to need a bit of math. Don't worry, it's just multiplication,
+division and addition. You just have to put them
+together the right way. To understand how to do this math,
+we're going to start with decimal. The base ten number
+system you use everyday. We'll explain the concepts in base ten. Then learn about binary, the base two number system that
+the computer uses to store numbers. All the principles will be the same
+in base two as they are in base ten. You will just need to use powers
+of two instead of powers of ten. To see this idea in the familiar base ten. Suppose that the values for
+the red, green and blue went from 0 to 9999
+instead of 0 to 255. This gives each component of
+the color 4 decimal digits. Now, suppose you want to hide this
+red pixel with the RGB values shown. Red = 8274, Green = 0 and Blue = 1098. In this blue pixel with
+RGB values of Red = 3568, Green = 5686 and Blue = 7450. We'll put the result here on the right. For the red, you want to take the most
+significant two digits of the pixel you want to hide the data in,
+which is the blue pixel. And use them as the most significant
+two digits of the result. Then you want to take the most significant
+two digits of the pixel you want to hide, the red pixel. And use them as the least significant
+two digits of the result. Notice that 3582 is
+pretty similar to 3568. It will look almost the same. But you've changed it slightly so that it stores the secret information
+in its least significant digits. Now, you do the same thing for green. Taking the two most significant
+digits from this blue pixel. And combining them with the most
+significant two digits from this red pixel. Again, 5600 is pretty similar to 5686. Now, you do the same thing for
+the blue component. Combining the most significant digits
+from the two pixels' blue components. The resulting number, 7410 is again
+quite similar to the original 7450. If you look at the resulting
+color of this pixel, it's pretty hard to tell the difference
+between it and the original blue pixel. But as you'll see,
+we've hidden a red pixel inside it. Now that the information is hidden,
+how would you extract the secret? You know that you want the least
+significant two digits of this pixel's red to be the most significant
+two digits of the hidden and soon to be extracted pixel's red. So we want 82 to be the most significant
+digits of the R or red value. But what should the least
+significant digits be? It doesn't really matter too much,
+so we'll just pick 0. Then, you do the same thing for
+green, and the same thing for blue. If you look at the resulting color,
+it is this shade of red. That shade of red is pretty close to
+the original color that we wanted to hide. Even though you don't get
+the exact color back out, the extracted image will
+look pretty similar. So now you know the big idea. Steganography is hiding
+data in other data. In particular, you're going to do this
+with hiding one image in another. Now you understand the basic
+math that is involved in it, taking digits from each number and
+combining them. However, to implement this in code, you are going to need to learn
+a little bit about binary. The base two number
+system the computer uses. Which is why the color values go
+from 0 to 255 instead of the 0 to 9999 that we just worked with.

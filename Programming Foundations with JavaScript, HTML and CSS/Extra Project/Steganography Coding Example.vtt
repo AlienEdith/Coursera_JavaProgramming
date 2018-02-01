@@ -1,0 +1,476 @@
+WEBVTT
+
+1
+00:00:03.374 --> 00:00:06.320
+Okay, we've walked through
+some of the concepts and
+
+2
+00:00:06.320 --> 00:00:10.990
+we told you we would walk you through
+the code to hide one image in another.
+
+3
+00:00:10.990 --> 00:00:15.040
+We've started here with the clear bits
+function which we'd seen before in
+
+4
+00:00:15.040 --> 00:00:19.910
+a previous video which just takes
+the Math.floor of the color
+
+5
+00:00:19.910 --> 00:00:24.210
+value divided by 16 and multiplies
+it by 16 to clear out the lower bit.
+
+6
+00:00:25.220 --> 00:00:29.300
+We've previously talked about
+the chop2hide function, and
+
+7
+00:00:29.300 --> 00:00:31.730
+we've written down here the steps for
+the algorithm for
+
+8
+00:00:31.730 --> 00:00:34.770
+that and
+we're just going to turn those into code.
+
+9
+00:00:34.770 --> 00:00:39.880
+So we need for(var px of Image.values),
+
+10
+00:00:39.880 --> 00:00:48.179
+that's how you've seen to iterate
+over the pixels in an image before.
+
+11
+00:00:48.179 --> 00:00:54.421
+And we want to clear the low bits of
+the red, so px.setRed to (clearbits),
+
+12
+00:00:54.421 --> 00:01:00.030
+this is the function we wrote to
+do the math for us of (px.getRed).
+
+13
+00:01:00.030 --> 00:01:02.940
+So we want to take the current red value
+
+14
+00:01:02.940 --> 00:01:08.090
+call clear bits to zero
+out the lower bits.
+
+15
+00:01:08.090 --> 00:01:09.590
+And then set the red to that new value.
+
+16
+00:01:10.950 --> 00:01:13.104
+We can do the same thing for the green.
+
+17
+00:01:20.747 --> 00:01:22.143
+And the blue.
+
+18
+00:01:27.820 --> 00:01:32.762
+And then when we're finished, our image
+that we've been modifying is the answer to
+
+19
+00:01:32.762 --> 00:01:38.600
+our whole function, that's what we're we
+want to give back to whoever called us.
+
+20
+00:01:38.600 --> 00:01:40.770
+Now, I've got some placeholders for
+
+21
+00:01:40.770 --> 00:01:43.330
+the other functions we're going
+to write here in a second.
+
+22
+00:01:43.330 --> 00:01:46.670
+And, at the bottom here,
+I've got this algorithm that we saw as our
+
+23
+00:01:46.670 --> 00:01:51.480
+high level algorithm where we combine
+chop to hide, shift and combined.
+
+24
+00:01:51.480 --> 00:01:53.700
+So at this point,
+these two functions don't do anything so
+
+25
+00:01:53.700 --> 00:01:56.990
+printing our overall answer is
+not going to do us much good.
+
+26
+00:01:56.990 --> 00:01:58.870
+I'm going to comment these lines out.
+
+27
+00:02:00.050 --> 00:02:03.297
+And instead,
+I'm just going to print start so
+
+28
+00:02:03.297 --> 00:02:08.578
+that we can make sure that works pretty
+well before we do anything else.
+
+29
+00:02:08.578 --> 00:02:12.752
+So if I run this code, I'm working
+with our picture of Ussain Bolt,
+
+30
+00:02:12.752 --> 00:02:17.480
+I get something that looks pretty
+similar as with the previous videos.
+
+31
+00:02:17.480 --> 00:02:20.920
+You can notice that the background
+colors have changed just a little
+
+32
+00:02:20.920 --> 00:02:23.050
+because I've been modifying
+these color values.
+
+33
+00:02:24.600 --> 00:02:26.560
+Great, now let's go work on shift.
+
+34
+00:02:26.560 --> 00:02:30.900
+So remember, this is where we're going to
+take those most significant bits, and move
+
+35
+00:02:30.900 --> 00:02:35.670
+them over to the least significant bit
+position for the image we want to hide.
+
+36
+00:02:35.670 --> 00:02:40.200
+So our algorithm is going to call for us
+to iterate over each Pixel in the image.
+
+37
+00:02:42.390 --> 00:02:51.070
+And what we want to do here is
+to shift over the red bits.
+
+38
+00:02:51.070 --> 00:02:54.000
+So we want to px.setred.
+
+39
+00:02:54.000 --> 00:02:56.841
+And remember we can do
+this by dividing by 16.
+
+40
+00:02:56.841 --> 00:03:02.240
+(Px.get Red / 16) because 16 is 2 to
+
+41
+00:03:02.240 --> 00:03:07.340
+the 4th power that would move everything
+over four binary digits or bits.
+
+42
+00:03:08.600 --> 00:03:15.330
+Now, we want the px.setGreen
+to (px.getGreen () /16).
+
+43
+00:03:15.330 --> 00:03:20.229
+And similarly,
+px.setBlue(px.getBlue() /16).
+
+44
+00:03:20.229 --> 00:03:25.802
+And again we've written
+this little bit of code,
+
+45
+00:03:25.802 --> 00:03:30.314
+we'd like to make sure that it works, or
+
+46
+00:03:30.314 --> 00:03:35.370
+at least look like it
+works before we move on.
+
+47
+00:03:35.370 --> 00:03:37.850
+We're not testing very
+thoroughly in this video,
+
+48
+00:03:37.850 --> 00:03:42.360
+we're going to encourage you to do more
+extensive testing of your own code.
+
+49
+00:03:42.360 --> 00:03:49.122
+So what if we now hide and
+we print out hide?
+
+50
+00:03:52.616 --> 00:03:57.799
+Oops, we left off, if we go back up here,
+we got sort of a weird error message,
+
+51
+00:03:57.799 --> 00:04:01.280
+cannot read property
+'getString' of undefined.
+
+52
+00:04:01.280 --> 00:04:02.250
+What is that mean?
+
+53
+00:04:02.250 --> 00:04:06.580
+Well something was undefined
+that's generally a bad thing.
+
+54
+00:04:06.580 --> 00:04:11.020
+If I go back and look at this,
+I forgot to return my answer, ops.
+
+55
+00:04:12.870 --> 00:04:15.570
+And now we get an image
+that is mostly black.
+
+56
+00:04:15.570 --> 00:04:17.360
+If you remember from before
+that's what we want.
+
+57
+00:04:17.360 --> 00:04:20.510
+We had hidden all of this
+information with significant bits.
+
+58
+00:04:20.510 --> 00:04:22.030
+We can't really see it.
+
+59
+00:04:22.030 --> 00:04:24.170
+Even though we just fixed
+one little compiler error,
+
+60
+00:04:24.170 --> 00:04:27.740
+it was really good that we got that
+fixed before we had a big mess of code
+
+61
+00:04:27.740 --> 00:04:29.570
+where it might have been
+harder to find that problem.
+
+62
+00:04:30.990 --> 00:04:32.918
+Finally, we need this combine function.
+
+63
+00:04:32.918 --> 00:04:39.310
+We want to make a new image,
+we're going to call it answer.
+
+64
+00:04:39.310 --> 00:04:43.190
+It's going to be a new simple
+image of the same size, so
+
+65
+00:04:43.190 --> 00:04:49.129
+we want show.getWidth and show.getHeight.
+
+66
+00:04:49.129 --> 00:04:53.810
+Show is one of the parameters to combine
+the image we want to show up and
+
+67
+00:04:53.810 --> 00:04:56.300
+hide is the other image
+which we want to hide.
+
+68
+00:04:56.300 --> 00:04:59.030
+We're going to assume they're
+the same size right now.
+
+69
+00:04:59.030 --> 00:05:00.730
+That's not very robust.
+
+70
+00:05:00.730 --> 00:05:05.240
+You'll write some code to crop
+the images to be of the same size,
+
+71
+00:05:05.240 --> 00:05:10.770
+then you can work with any images and for
+
+72
+00:05:10.770 --> 00:05:18.100
+each pixel in answer.values, we want
+to get the x and y of that pixel so
+
+73
+00:05:18.100 --> 00:05:23.220
+var x = px.get x(), you should be
+pretty familiar with that by now,
+
+74
+00:05:23.220 --> 00:05:28.070
+and var y = px.get y(),
+again, a familiar thing.
+
+75
+00:05:28.070 --> 00:05:33.886
+We want to get the same pixel,
+showPixel we'll call it,
+
+76
+00:05:33.886 --> 00:05:38.355
+from the show image .getPixel with x,y.
+
+77
+00:05:38.355 --> 00:05:47.740
+And we want the same
+hidePixel hide.getPixel.
+
+78
+00:05:47.740 --> 00:05:53.900
+The same pixel from the hide image,
+and now we want to set px as red
+
+79
+00:05:54.950 --> 00:06:02.300
+to the sum of showPixels
+red plus a hidePixels red.
+
+80
+00:06:04.600 --> 00:06:07.280
+Remember, that's going to
+combine the two together.
+
+81
+00:06:07.280 --> 00:06:10.070
+One of them is going to have the most
+significant four bit set and
+
+82
+00:06:10.070 --> 00:06:11.060
+the other's zero.
+
+83
+00:06:11.060 --> 00:06:14.200
+The other's going to have the least
+significant four bit set, and the other 0,
+
+84
+00:06:14.200 --> 00:06:17.540
+so when they get added together
+we'll get a whole eight bit number.
+
+85
+00:06:17.540 --> 00:06:26.001
+And then we're going to
+do the same thing for
+
+86
+00:06:26.001 --> 00:06:30.117
+green and for blue.
+
+87
+00:06:42.443 --> 00:06:48.020
+And after doing that for each pixel, our
+answer is going to be the image answer.
+
+88
+00:06:49.030 --> 00:06:50.150
+So now I'm going to come down here.
+
+89
+00:06:50.150 --> 00:06:53.670
+I'm going to uncomment
+these last two lines.
+
+90
+00:06:53.670 --> 00:06:55.130
+Get rid of the extra one I wrote.
+
+91
+00:06:56.420 --> 00:07:00.750
+Now we get this image of Hussein Bolt
+that looks like what we expected.
+
+92
+00:07:00.750 --> 00:07:02.240
+Are we sure it's right?
+
+93
+00:07:02.240 --> 00:07:04.350
+Not really,
+we'd want to investigate a little more.
+
+94
+00:07:04.350 --> 00:07:09.270
+We could have just messed up and
+returned our start image somewhere or
+
+95
+00:07:09.270 --> 00:07:10.640
+something like that.
+
+96
+00:07:10.640 --> 00:07:14.030
+We're not going to test terrible
+rigorously in this video.
+
+97
+00:07:14.030 --> 00:07:17.800
+So that would take more time,
+we'd leave that up to you.
+
+98
+00:07:17.800 --> 00:07:20.710
+So with that, I'll leave you with
+one final important question.
+
+99
+00:07:20.710 --> 00:07:26.660
+What would happen if we hid an image of
+a stegosaurus inside of another image?
+
+100
+00:07:27.810 --> 00:07:31.396
+It would be stegasaurusonography.

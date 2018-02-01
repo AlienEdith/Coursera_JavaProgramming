@@ -1,0 +1,555 @@
+WEBVTT
+
+1
+00:00:03.283 --> 00:00:04.401
+Hi, in this lesson,
+
+2
+00:00:04.401 --> 00:00:09.011
+you're going to learn how to use functions
+to implement what is called steganography.
+
+3
+00:00:09.011 --> 00:00:13.805
+Hiding data in an image or
+other digital artifact like an audio file,
+
+4
+00:00:13.805 --> 00:00:17.860
+a software program, or
+any file of zeros and ones.
+
+5
+00:00:17.860 --> 00:00:21.382
+Because steganography is a bit larger
+of a task than previous problems
+
+6
+00:00:21.382 --> 00:00:22.283
+you have solved.
+
+7
+00:00:22.283 --> 00:00:25.820
+It's a great idea to break
+the code down into functions.
+
+8
+00:00:25.820 --> 00:00:29.886
+As you progress through this lesson,
+you'll see some examples where pieces of
+
+9
+00:00:29.886 --> 00:00:32.505
+code are abstracted out
+into separate functions.
+
+10
+00:00:32.505 --> 00:00:37.310
+To simplify the entire solution and
+to avoid repetition of code.
+
+11
+00:00:37.310 --> 00:00:40.307
+The idea behind steganography
+is to take an image,
+
+12
+00:00:40.307 --> 00:00:42.685
+like this image of sprinter Usain Bolt.
+
+13
+00:00:42.685 --> 00:00:45.273
+And hide data like
+another image inside it.
+
+14
+00:00:45.273 --> 00:00:49.888
+Altering the numerical values of the
+pixels of Usain Bolt to encode the hidden
+
+15
+00:00:49.888 --> 00:00:51.010
+image.
+
+16
+00:00:51.010 --> 00:00:55.217
+The key to steganography is to hide the
+data in such a way that nobody can easily
+
+17
+00:00:55.217 --> 00:00:57.561
+tell you've altered the original image.
+
+18
+00:00:58.760 --> 00:01:02.033
+This image on the right is the result
+of hiding a secret message in
+
+19
+00:01:02.033 --> 00:01:03.710
+the first image.
+
+20
+00:01:03.710 --> 00:01:06.130
+Can you tell that it has been altered?
+
+21
+00:01:06.130 --> 00:01:07.930
+If you look really closely,
+
+22
+00:01:07.930 --> 00:01:11.040
+you can see some differences in
+the shading of the background.
+
+23
+00:01:11.040 --> 00:01:14.540
+However, if you were to just look
+at the second image by itself,
+
+24
+00:01:14.540 --> 00:01:16.240
+there is nothing suspicious.
+
+25
+00:01:16.240 --> 00:01:19.050
+It just looks like
+a picture of Usain Bolt.
+
+26
+00:01:19.050 --> 00:01:23.350
+This idea has been around for
+a long time, predating computers.
+
+27
+00:01:23.350 --> 00:01:27.360
+Sending an undetected message has
+been important throughout history.
+
+28
+00:01:27.360 --> 00:01:29.870
+One important modern use
+is to avoid censorship
+
+29
+00:01:29.870 --> 00:01:31.480
+imposed by oppressive governments.
+
+30
+00:01:32.590 --> 00:01:35.560
+You can hide any digital
+information in an image.
+
+31
+00:01:35.560 --> 00:01:39.180
+You could, for example,
+hide a text or HTML file in an image.
+
+32
+00:01:39.180 --> 00:01:41.198
+However, that would take
+a bit more math and
+
+33
+00:01:41.198 --> 00:01:43.720
+a deeper understanding of
+how everything is a number.
+
+34
+00:01:43.720 --> 00:01:45.493
+To keep things simple at first,
+
+35
+00:01:45.493 --> 00:01:50.120
+you'll work with hiding an image
+in another image of the same size.
+
+36
+00:01:50.120 --> 00:01:51.950
+When you are finished with this lesson,
+
+37
+00:01:51.950 --> 00:01:54.830
+you'll be able to find hidden
+meaning in the universe.
+
+38
+00:01:54.830 --> 00:01:58.000
+That is, we're going to walk you
+through not only the concepts,
+
+39
+00:01:58.000 --> 00:02:01.300
+but also the codes to do
+steganographic hiding.
+
+40
+00:02:01.300 --> 00:02:05.490
+Then you will write the code to extract
+the hidden message from an image.
+
+41
+00:02:05.490 --> 00:02:08.460
+For example, you could take
+this picture of a galaxy and
+
+42
+00:02:08.460 --> 00:02:10.960
+extract the message that
+we hid inside of it.
+
+43
+00:02:12.380 --> 00:02:14.900
+Okay, so how do you actually do this?
+
+44
+00:02:14.900 --> 00:02:17.240
+You already know that pixels have red,
+green and
+
+45
+00:02:17.240 --> 00:02:20.820
+blue components which
+numerically represent the color.
+
+46
+00:02:20.820 --> 00:02:26.603
+Is there a big difference between a red
+value of 240 and a red value of 255?
+
+47
+00:02:26.603 --> 00:02:29.398
+They are numerically different,
+but if you look at them,
+
+48
+00:02:29.398 --> 00:02:31.870
+the two of them are pretty similar.
+
+49
+00:02:31.870 --> 00:02:34.735
+The fact that you can't easily tell
+the difference when you change
+
+50
+00:02:34.735 --> 00:02:39.220
+the numerical value slightly is
+the key to hiding data in an image.
+
+51
+00:02:39.220 --> 00:02:43.760
+You can store the hidden data in the least
+significant digits of the color value.
+
+52
+00:02:43.760 --> 00:02:47.040
+And not see much change
+in the resulting color.
+
+53
+00:02:47.040 --> 00:02:49.868
+The least significant digits
+are like the ones and
+
+54
+00:02:49.868 --> 00:02:51.963
+tens places in a three digit number.
+
+55
+00:02:51.963 --> 00:02:58.190
+So you could hide a 15 in
+240 by changing 240 to 255.
+
+56
+00:02:58.190 --> 00:03:01.380
+To do this,
+you're going to need a bit of math.
+
+57
+00:03:01.380 --> 00:03:04.790
+Don't worry, it's just multiplication,
+division and addition.
+
+58
+00:03:04.790 --> 00:03:07.490
+You just have to put them
+together the right way.
+
+59
+00:03:07.490 --> 00:03:11.041
+To understand how to do this math,
+we're going to start with decimal.
+
+60
+00:03:11.041 --> 00:03:14.140
+The base ten number
+system you use everyday.
+
+61
+00:03:14.140 --> 00:03:16.510
+We'll explain the concepts in base ten.
+
+62
+00:03:16.510 --> 00:03:18.064
+Then learn about binary,
+
+63
+00:03:18.064 --> 00:03:22.100
+the base two number system that
+the computer uses to store numbers.
+
+64
+00:03:23.210 --> 00:03:26.460
+All the principles will be the same
+in base two as they are in base ten.
+
+65
+00:03:26.460 --> 00:03:30.030
+You will just need to use powers
+of two instead of powers of ten.
+
+66
+00:03:31.110 --> 00:03:33.873
+To see this idea in the familiar base ten.
+
+67
+00:03:33.873 --> 00:03:37.760
+Suppose that the values for
+the red, green and
+
+68
+00:03:37.760 --> 00:03:42.256
+blue went from 0 to 9999
+instead of 0 to 255.
+
+69
+00:03:42.256 --> 00:03:47.290
+This gives each component of
+the color 4 decimal digits.
+
+70
+00:03:47.290 --> 00:03:52.336
+Now, suppose you want to hide this
+red pixel with the RGB values shown.
+
+71
+00:03:52.336 --> 00:03:58.004
+Red = 8274, Green = 0 and Blue = 1098.
+
+72
+00:03:58.004 --> 00:04:04.091
+In this blue pixel with
+RGB values of Red = 3568,
+
+73
+00:04:04.091 --> 00:04:08.708
+Green = 5686 and Blue = 7450.
+
+74
+00:04:08.708 --> 00:04:10.560
+We'll put the result here on the right.
+
+75
+00:04:11.560 --> 00:04:15.540
+For the red, you want to take the most
+significant two digits of the pixel you
+
+76
+00:04:15.540 --> 00:04:18.860
+want to hide the data in,
+which is the blue pixel.
+
+77
+00:04:18.860 --> 00:04:23.060
+And use them as the most significant
+two digits of the result.
+
+78
+00:04:23.060 --> 00:04:27.786
+Then you want to take the most significant
+two digits of the pixel you want to hide,
+
+79
+00:04:27.786 --> 00:04:28.690
+the red pixel.
+
+80
+00:04:28.690 --> 00:04:32.792
+And use them as the least significant
+two digits of the result.
+
+81
+00:04:32.792 --> 00:04:38.256
+Notice that 3582 is
+pretty similar to 3568.
+
+82
+00:04:38.256 --> 00:04:40.204
+It will look almost the same.
+
+83
+00:04:40.204 --> 00:04:42.010
+But you've changed it slightly so
+
+84
+00:04:42.010 --> 00:04:45.819
+that it stores the secret information
+in its least significant digits.
+
+85
+00:04:47.170 --> 00:04:49.540
+Now, you do the same thing for green.
+
+86
+00:04:49.540 --> 00:04:53.366
+Taking the two most significant
+digits from this blue pixel.
+
+87
+00:04:53.366 --> 00:04:56.723
+And combining them with the most
+significant two digits from this
+
+88
+00:04:56.723 --> 00:04:58.090
+red pixel.
+
+89
+00:04:58.090 --> 00:05:04.150
+Again, 5600 is pretty similar to 5686.
+
+90
+00:05:04.150 --> 00:05:06.231
+Now, you do the same thing for
+the blue component.
+
+91
+00:05:06.231 --> 00:05:10.930
+Combining the most significant digits
+from the two pixels' blue components.
+
+92
+00:05:10.930 --> 00:05:17.545
+The resulting number, 7410 is again
+quite similar to the original 7450.
+
+93
+00:05:17.545 --> 00:05:20.426
+If you look at the resulting
+color of this pixel,
+
+94
+00:05:20.426 --> 00:05:25.780
+it's pretty hard to tell the difference
+between it and the original blue pixel.
+
+95
+00:05:25.780 --> 00:05:30.450
+But as you'll see,
+we've hidden a red pixel inside it.
+
+96
+00:05:30.450 --> 00:05:34.620
+Now that the information is hidden,
+how would you extract the secret?
+
+97
+00:05:34.620 --> 00:05:39.480
+You know that you want the least
+significant two digits of this pixel's red
+
+98
+00:05:39.480 --> 00:05:43.080
+to be the most significant
+two digits of the hidden and
+
+99
+00:05:43.080 --> 00:05:45.450
+soon to be extracted pixel's red.
+
+100
+00:05:45.450 --> 00:05:50.860
+So we want 82 to be the most significant
+digits of the R or red value.
+
+101
+00:05:50.860 --> 00:05:53.670
+But what should the least
+significant digits be?
+
+102
+00:05:53.670 --> 00:05:56.565
+It doesn't really matter too much,
+so we'll just pick 0.
+
+103
+00:05:57.930 --> 00:06:01.350
+Then, you do the same thing for
+green, and the same thing for blue.
+
+104
+00:06:02.370 --> 00:06:06.830
+If you look at the resulting color,
+it is this shade of red.
+
+105
+00:06:06.830 --> 00:06:11.160
+That shade of red is pretty close to
+the original color that we wanted to hide.
+
+106
+00:06:11.160 --> 00:06:14.120
+Even though you don't get
+the exact color back out,
+
+107
+00:06:14.120 --> 00:06:17.150
+the extracted image will
+look pretty similar.
+
+108
+00:06:17.150 --> 00:06:18.690
+So now you know the big idea.
+
+109
+00:06:18.690 --> 00:06:21.930
+Steganography is hiding
+data in other data.
+
+110
+00:06:21.930 --> 00:06:26.000
+In particular, you're going to do this
+with hiding one image in another.
+
+111
+00:06:26.000 --> 00:06:28.520
+Now you understand the basic
+math that is involved in it,
+
+112
+00:06:28.520 --> 00:06:31.280
+taking digits from each number and
+combining them.
+
+113
+00:06:31.280 --> 00:06:33.042
+However, to implement this in code,
+
+114
+00:06:33.042 --> 00:06:35.642
+you are going to need to learn
+a little bit about binary.
+
+115
+00:06:35.642 --> 00:06:38.324
+The base two number
+system the computer uses.
+
+116
+00:06:38.324 --> 00:06:43.028
+Which is why the color values go
+from 0 to 255 instead of the 0 to
+
+117
+00:06:43.028 --> 00:06:45.550
+9999 that we just worked with.
