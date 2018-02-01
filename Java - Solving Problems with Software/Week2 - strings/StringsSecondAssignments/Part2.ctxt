@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=Part2
+comment0.text=\r\n\ \u5728\u8FD9\u91CC\u7ED9\u51FA\u5BF9\u7C7B\ Part2\ \u7684\u63CF\u8FF0\u3002\r\n\ \r\n\ @\u4F5C\u8005\uFF08\u4F60\u7684\u540D\u5B57\uFF09\r\n\ @\u7248\u672C\uFF08\u4E00\u4E2A\u7248\u672C\u53F7\u6216\u8005\u4E00\u4E2A\u65E5\u671F\uFF09\r\n
+comment1.params=stringa\ stringb
+comment1.target=int\ howMany(java.lang.String,\ java.lang.String)
+comment2.params=
+comment2.target=void\ testHowMany()
+numComments=3

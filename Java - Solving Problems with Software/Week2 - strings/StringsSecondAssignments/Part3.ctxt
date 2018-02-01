@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=Part3
+comment0.text=\r\n\ \u5728\u8FD9\u91CC\u7ED9\u51FA\u5BF9\u7C7B\ Part3\ \u7684\u63CF\u8FF0\u3002\r\n\ \r\n\ @\u4F5C\u8005\uFF08\u4F60\u7684\u540D\u5B57\uFF09\r\n\ @\u7248\u672C\uFF08\u4E00\u4E2A\u7248\u672C\u53F7\u6216\u8005\u4E00\u4E2A\u65E5\u671F\uFF09\r\n
+comment1.params=dna\ startIndex\ stopCodon
+comment1.target=int\ findStopCodon(java.lang.String,\ int,\ java.lang.String)
+comment2.params=dna\ where
+comment2.target=java.lang.String\ findGene(java.lang.String,\ int)
+comment3.params=dna
+comment3.target=void\ printAllGenes(java.lang.String)
+comment3.text=public\ void\ testFindGene(){\r\n\ \ \ \ //\ \ \ \ \ \ \ \ 0123456789ABCDEF\r\n\ \ \ \ String\ a\="CCCAAATAA";\ //no\ ATG\ empty\r\n\ \ \ \ String\ b\="CCCATGAAATAA";\ \ //valid\ ATGAAATAA\r\n\ \ \ \ String\ c\="CCCATGAATAAATAG";\ \ \ \ //valid\ ATGAATAAATAG\r\n\ \ \ \ String\ d\="CCCATGAATAAAATAGAATGA";\ //valid\ ATGAATAAAATAGAATGA\r\n\ \ \ \ String\ e\="CCCATGAATAAAATAG";\ //no\ valid\ stop\r\n\ \ \ \ \r\n\ \ \ \ String\ resulta\=findGene(a);\r\n\ \ \ \ String\ resultb\=findGene(b);\r\n\ \ \ \ String\ resultc\=findGene(c);\r\n\ \ \ \ String\ resultd\=findGene(d);\r\n\ \ \ \ String\ resulte\=findGene(e);\r\n\ \ \ \ \r\n\ \ \ \ System.out.println("The\ dna\ of\ a\ is\ "+\ a);\r\n\ \ \ \ System.out.println("The\ gene\ of\ a\ is\ "+\ resulta);\r\n\ \ \ \ System.out.println("The\ dna\ of\ b\ is\ "+\ b);\r\n\ \ \ \ System.out.println("The\ gene\ of\ b\ is\ "+\ resultb);\r\n\ \ \ \ System.out.println("The\ dna\ of\ c\ is\ "+\ c);\r\n\ \ \ \ System.out.println("The\ gene\ of\ c\ is\ "+\ resultc);\r\n\ \ \ \ System.out.println("The\ dna\ of\ d\ is\ "+\ d);\r\n\ \ \ \ System.out.println("The\ gene\ of\ d\ is\ "+\ resultd);\r\n\ \ \ \ System.out.println("The\ dna\ of\ e\ is\ "+\ e);\r\n\ \ \ \ System.out.println("The\ gene\ of\ e\ is\ "+\ resulte);\r\n}
+comment4.params=dna
+comment4.target=int\ countGenes(java.lang.String)
+comment5.params=
+comment5.target=void\ testCountGenes()
+comment6.params=
+comment6.target=void\ testingAllgenes()
+numComments=7

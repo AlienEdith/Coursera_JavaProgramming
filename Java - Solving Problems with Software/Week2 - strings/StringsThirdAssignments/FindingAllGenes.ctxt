@@ -1,0 +1,27 @@
+#BlueJ class context
+comment0.target=FindingAllGenes
+comment0.text=\r\n\ Week\ 2.\r\n
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment2.params=sr
+comment2.target=void\ printGensInformation(edu.duke.StorageResource)
+comment2.text=\r\n\ prints\ all\ the\ Strings\ that\ are\ longer\ than\ 60\ characters\r\n\ prints\ the\ number\ of\ Strings\ that\ are\ longer\ than\ 60\ characters\r\n\ prints\ the\ Strings\ whose\ C-G-ratio\ is\ higher\ than\ 0.35\r\n\ prints\ the\ number\ of\ strings\ whose\ C-G-ratio\ is\ higher\ than\ 0.35\r\n\r\n\ @param\ sr\r\n
+comment3.params=dna
+comment3.target=edu.duke.StorageResource\ findProtein(java.lang.String)
+comment3.text=\r\n\ Find\ all\ proteins\ in\ a\ gene\r\n\r\n\ @param\ dna\r\n
+comment4.params=dna\ startPos
+comment4.target=int\ findEndPosition(java.lang.String,\ int)
+comment4.text=\r\n\ Find\ end\ position\ of\ \ the\ certain\ protein\r\n\r\n\ @param\ dna\r\n\ @param\ startPos\r\n\ @return\r\n
+comment5.params=dna
+comment5.target=float\ cgRatio(java.lang.String)
+comment5.text=\r\n\ Compute\ C-G\ ratio\ for\ the\ certain\ protein\r\n\r\n\ @param\ dna\r\n\ @return\r\n
+comment6.params=letter\ word
+comment6.target=int\ countLetterInWord(char,\ java.lang.String)
+comment6.text=\r\n\ Count\ number\ of\ a\ letter\ in\ a\ word\r\n\r\n\ @param\ letter\r\n\ @param\ word\r\n\ @return\r\n
+comment7.params=sr
+comment7.target=java.lang.String\ getLongestGene(edu.duke.StorageResource)
+comment7.text=\r\n\ Find\ the\ longest\ gene\ in\ a\ collection\ of\ genes\r\n\r\n\ @param\ sr\ is\ a\ StorageResource\ of\ genes\r\n\ @return\r\n
+comment8.params=dna
+comment8.target=int\ countCTGCodon(java.lang.String)
+comment8.text=\r\n\ Count\ the\ codon\ CTG\ in\ a\ strand\ of\ DNA\r\n\r\n\ @param\ dna\ is\ a\ strand\ of\ DNA\r\n\ @return\ count\ of\ CTG\r\n
+numComments=9

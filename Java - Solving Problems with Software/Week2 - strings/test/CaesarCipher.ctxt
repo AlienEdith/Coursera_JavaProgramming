@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=CaesarCipher
+comment1.params=input\ key
+comment1.target=java.lang.String\ encrypt(java.lang.String,\ int)
+comment1.text=This\ method\ returns\ a\ String\ that\ has\ been\ encrypted\ using\ the\ Caesar\ Cipher\ algorithm
+comment2.params=input\ key1\ key2
+comment2.target=java.lang.String\ encryptTwoKeys(java.lang.String,\ int,\ int)
+comment2.text=\ \r\n\ This\ method\ returns\ a\ String\ that\ has\ been\ encrypted\ using\ the\ following\ algorithm\ \r\n\ key1\ is\ used\ to\ encrypt\ every\ other\ character\ with\ the\ Caesar\ Cipher\ algorithm,\ starting\ with\ the\ first\ character\r\n\ key2\ is\ used\ to\ encrypt\ every\ other\ character,\ starting\ with\ the\ second\ character\r\n
+comment3.params=
+comment3.target=void\ testCaesar()
+numComments=4
