@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=WordLengths
+comment1.params=resource\ counts
+comment1.target=void\ WordLengths(edu.duke.FileResource,\ int[])
+comment2.params=values
+comment2.target=int\ indexOfMax(int[])
+comment3.params=
+comment3.target=void\ testCountWordLengths()
+numComments=4

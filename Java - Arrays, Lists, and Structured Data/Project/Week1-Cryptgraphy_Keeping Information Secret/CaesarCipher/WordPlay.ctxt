@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=WordPlay
+comment0.text=\r\n\ Assignment\ week1-1\:WordPlay\r\n\ \r\n\ @\u4F5C\u8005\uFF08\u4F60\u7684\u540D\u5B57\uFF09\r\n\ @\u7248\u672C\uFF08\u4E00\u4E2A\u7248\u672C\u53F7\u6216\u8005\u4E00\u4E2A\u65E5\u671F\uFF09\r\n
+comment1.params=ch
+comment1.target=boolean\ isVowel(char)
+comment2.params=phrase\ ch
+comment2.target=java.lang.String\ replaceVowels(java.lang.String,\ char)
+comment3.params=phrase\ ch
+comment3.target=java.lang.String\ emphasize(java.lang.String,\ char)
+numComments=4
