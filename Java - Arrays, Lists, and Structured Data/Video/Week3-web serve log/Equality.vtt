@@ -1,0 +1,343 @@
+WEBVTT
+
+1
+00:00:03.500 --> 00:00:07.370
+Now that you have written code to find the
+unique IP addresses in a web server log,
+
+2
+00:00:07.370 --> 00:00:11.970
+let us take a brief look at something
+very close that would not have worked.
+
+3
+00:00:13.010 --> 00:00:17.620
+Here is the code that you just wrote for
+the unique IP addresses problem.
+
+4
+00:00:17.620 --> 00:00:20.760
+Remember that you have
+an array list of strings and
+
+5
+00:00:20.760 --> 00:00:25.600
+that you put the string for each log
+entries IP address into that array list.
+
+6
+00:00:26.680 --> 00:00:29.530
+But what if you had
+written this code instead?
+
+7
+00:00:29.530 --> 00:00:36.060
+This code is the same as what you wrote,
+but the array list holds log entries and
+
+8
+00:00:36.060 --> 00:00:41.930
+the code checks if it has the current log
+entry, not the LogEntry's IP address.
+
+9
+00:00:41.930 --> 00:00:46.870
+Likewise, it adds the entire LogEntry
+object, if it was not already there.
+
+10
+00:00:46.870 --> 00:00:50.600
+If you were to run this code,
+it would give you the wrong answer.
+
+11
+00:00:50.600 --> 00:00:55.100
+In fact, it would tell you how
+many total LogEntry's there are,
+
+12
+00:00:55.100 --> 00:00:58.540
+not how many unique IP addresses
+there are in the log file.
+
+13
+00:00:58.540 --> 00:00:59.180
+Why is that?
+
+14
+00:01:00.380 --> 00:01:04.720
+To understand this problem, think for
+a moment about how contains would work.
+
+15
+00:01:04.720 --> 00:01:09.540
+In particular, how does contains know if
+two objects are the same or different?
+
+16
+00:01:09.540 --> 00:01:12.420
+Contains is going to
+check if they are equal.
+
+17
+00:01:12.420 --> 00:01:14.680
+What exactly do we mean by equal?
+
+18
+00:01:16.260 --> 00:01:18.740
+Java has two different
+notions of equality.
+
+19
+00:01:18.740 --> 00:01:23.187
+To illustrate this, consider the situation
+in which you have three string variables,
+
+20
+00:01:23.187 --> 00:01:28.670
+a,b, and c, which refer to
+two different string objects.
+
+21
+00:01:28.670 --> 00:01:33.290
+a and b refer to the exact same string
+object, so they are clearly equal.
+
+22
+00:01:33.290 --> 00:01:37.570
+a and c however refer to different string
+objects with the same logical contents.
+
+23
+00:01:38.640 --> 00:01:40.530
+On the one hand you could
+say they are equal,
+
+24
+00:01:40.530 --> 00:01:43.720
+because they talk about strings
+that mean the same thing.
+
+25
+00:01:43.720 --> 00:01:45.990
+On the other you could say they are not,
+
+26
+00:01:45.990 --> 00:01:49.630
+because they are talking
+about different objects.
+
+27
+00:01:49.630 --> 00:01:52.710
+These are the two different notions
+of equality that exist in Java.
+
+28
+00:01:54.320 --> 00:01:58.260
+The notion of equality meaning
+the exact same object is what you get
+
+29
+00:01:58.260 --> 00:02:00.331
+when you write, = =.
+
+30
+00:02:00.331 --> 00:02:08.460
+If you write, a = = b, then Java checks if
+a and b refer to the exact same object.
+
+31
+00:02:08.460 --> 00:02:11.950
+Since they do,
+this expression evaluates to true.
+
+32
+00:02:11.950 --> 00:02:16.370
+However, if you write a == c,
+then Java again checks if a and
+
+33
+00:02:16.370 --> 00:02:18.710
+c refer to the exact same object.
+
+34
+00:02:18.710 --> 00:02:22.970
+But because they do not,
+this expression evaluates to false.
+
+35
+00:02:22.970 --> 00:02:26.090
+The other notion of equality,
+do they mean the same thing,
+
+36
+00:02:26.090 --> 00:02:28.800
+is done with a .equals method.
+
+37
+00:02:28.800 --> 00:02:33.770
+If you wrote a.equals(c), then Java would
+call the .equals method in the string
+
+38
+00:02:33.770 --> 00:02:38.230
+class, which checks if the two strings
+have the same sequence of characters.
+
+39
+00:02:38.230 --> 00:02:42.465
+Because these two strings have
+the same sequence of characters,
+
+40
+00:02:42.465 --> 00:02:45.323
+a.equals(c), would evaluate to true?
+
+41
+00:02:45.323 --> 00:02:49.730
+So how does Java know whether two
+objects have the same logical meaning?
+
+42
+00:02:49.730 --> 00:02:53.800
+Each class defines .equals
+to specify what it means for
+
+43
+00:02:53.800 --> 00:02:55.770
+objects of that type to be the same.
+
+44
+00:02:56.800 --> 00:03:01.139
+If you do not write one explicitly,
+the default behavior would be to have
+
+45
+00:03:01.139 --> 00:03:05.910
+the .equals method check if the two
+objects are = = to each other?
+
+46
+00:03:05.910 --> 00:03:08.610
+That is if they
+are the exact same objects.
+
+47
+00:03:09.890 --> 00:03:12.335
+So know that you know
+about equals equals and
+
+48
+00:03:12.335 --> 00:03:15.940
+.equals should you write
+a .equals method for log entry?
+
+49
+00:03:17.200 --> 00:03:19.630
+Well the first thing you
+should do is think about
+
+50
+00:03:19.630 --> 00:03:22.710
+when 2 log entries are logically the same.
+
+51
+00:03:22.710 --> 00:03:25.640
+What about if they have
+the same IP address?
+
+52
+00:03:25.640 --> 00:03:27.360
+Well that would fix the broken code for
+
+53
+00:03:27.360 --> 00:03:30.890
+this particular problem,
+it's not a good approach in general.
+
+54
+00:03:30.890 --> 00:03:34.740
+It does not actually match with the notion
+of two log entries meaning the same thing.
+
+55
+00:03:36.010 --> 00:03:41.000
+Two different requests are not the same,
+even if they came from the same computer.
+
+56
+00:03:41.000 --> 00:03:43.350
+So what if you checked more information?
+
+57
+00:03:43.350 --> 00:03:46.170
+What if you checked for the same IP
+address and the same request string?
+
+58
+00:03:47.440 --> 00:03:51.200
+Even this would not really mean
+the two log entries are the same,
+
+59
+00:03:51.200 --> 00:03:54.300
+as the same computer could ask for
+the same page many times.
+
+60
+00:03:55.450 --> 00:03:59.900
+For log entries it makes sense to just
+say that they are logically the same,
+
+61
+00:03:59.900 --> 00:04:02.399
+only if they are in fact
+the exact same object.
+
+62
+00:04:03.820 --> 00:04:07.530
+Because the behavior you want
+is the default for .equals,
+
+63
+00:04:07.530 --> 00:04:08.980
+you do not need to explicitly write it.
+
+64
+00:04:10.070 --> 00:04:12.850
+Since you do not need to write
+a .equals method for this class,
+
+65
+00:04:12.850 --> 00:04:15.010
+we're not going to delve
+into how to do it yet.
+
+66
+00:04:16.050 --> 00:04:19.700
+Fully understanding what goes into
+a .equals method requires a little bit of
+
+67
+00:04:19.700 --> 00:04:24.420
+knowledge that you will not get until
+the principals of software design course.
+
+68
+00:04:26.600 --> 00:04:31.570
+However, now that you understand the ideas
+of equality and that the contains
+
+69
+00:04:31.570 --> 00:04:36.840
+method checks if two objects are the same
+you can understand why this code
+
+70
+00:04:36.840 --> 00:04:43.400
+did not work and this code where
+you used the IP addresses did work.
+
+71
+00:04:43.400 --> 00:04:43.900
+Thanks.

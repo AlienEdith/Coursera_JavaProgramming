@@ -1,0 +1,674 @@
+WEBVTT
+
+1
+00:00:02.961 --> 00:00:05.660
+Hello.
+You're going to learn the basics
+
+2
+00:00:05.660 --> 00:00:09.000
+of a powerful programming construct,
+the array.
+
+3
+00:00:09.000 --> 00:00:12.350
+Nearly every programming
+language in widespread use
+
+4
+00:00:12.350 --> 00:00:18.070
+uses a similar structure to be able to
+represent many items with one variable.
+
+5
+00:00:18.070 --> 00:00:21.920
+When you wrote code to help
+a genome scientist solve a problem,
+
+6
+00:00:21.920 --> 00:00:28.130
+you could count the number of occurrences
+of each c, g, t and a in a strand of DNA.
+
+7
+00:00:28.130 --> 00:00:29.580
+This is a real problem,
+
+8
+00:00:29.580 --> 00:00:33.100
+that helps find protein coating
+regions rich in c,g content.
+
+9
+00:00:34.340 --> 00:00:36.300
+As a programmer learning
+about encryption and
+
+10
+00:00:36.300 --> 00:00:41.030
+decryption, you'll need to count
+the number of recurrences of a, b,
+
+11
+00:00:41.030 --> 00:00:44.360
+c and every letter of
+the alphabet through x, y and z.
+
+12
+00:00:44.360 --> 00:00:45.660
+26 counters.
+
+13
+00:00:45.660 --> 00:00:48.720
+To be able to break a Caesar cipher or
+
+14
+00:00:48.720 --> 00:00:52.870
+decrypt a message encrypted with a Caesar
+cipher, although you could do this
+
+15
+00:00:52.870 --> 00:00:56.970
+with 26 variables,
+learn a new concept to help with decoding.
+
+16
+00:00:56.970 --> 00:01:01.490
+We'll learn about arrays, which
+are homogeneous collections of values.
+
+17
+00:01:01.490 --> 00:01:05.200
+Here you see post office mailboxes,
+they each look the same, but
+
+18
+00:01:05.200 --> 00:01:06.950
+each is numbered differently.
+
+19
+00:01:06.950 --> 00:01:10.490
+You can access box number 344 or box 345.
+
+20
+00:01:10.490 --> 00:01:13.340
+And you can either store letters and
+
+21
+00:01:13.340 --> 00:01:16.220
+packages in a box, or
+take them out of the box.
+
+22
+00:01:17.360 --> 00:01:20.450
+Arrays are similar
+concepts in programming.
+
+23
+00:01:20.450 --> 00:01:25.420
+As you'll see one array could
+represent 26, or 1,026 counters,
+
+24
+00:01:25.420 --> 00:01:29.230
+if your alphabet was huge, or
+if you were solving a different problem.
+
+25
+00:01:30.690 --> 00:01:33.730
+Let's look at code to
+help a genomic scientist.
+
+26
+00:01:33.730 --> 00:01:38.880
+We'll look at code that counts
+occurrences of c, g, t, and a.
+
+27
+00:01:38.880 --> 00:01:41.240
+To understand and motivate
+the problem of counting 26 letters.
+
+28
+00:01:42.840 --> 00:01:46.660
+As you can see,
+we've created four counters.
+
+29
+00:01:46.660 --> 00:01:51.940
+Initialized each one to zero, and
+then incremented the appropriate counter,
+
+30
+00:01:51.940 --> 00:01:55.240
+as we process every nucleotide
+in a digital strand of DNA.
+
+31
+00:01:56.280 --> 00:01:59.950
+This solution works, but it's very
+hard to scale having 26 counters,
+
+32
+00:01:59.950 --> 00:02:04.280
+which we would need to count
+every letter A through Z as
+
+33
+00:02:04.280 --> 00:02:07.158
+part of decrypting a message
+encrypted using a Caesar Cipher.
+
+34
+00:02:08.240 --> 00:02:10.220
+This isn't conceptually hard.
+
+35
+00:02:10.220 --> 00:02:13.700
+We could use CA, CB, CC, and so
+
+36
+00:02:13.700 --> 00:02:18.680
+on up through variables CY and
+CZ to have 26 variables.
+
+37
+00:02:18.680 --> 00:02:23.160
+And we're gonna have 26, if statements
+to increment the appropriate variable.
+
+38
+00:02:23.160 --> 00:02:28.310
+But writing the code and changing what
+we do with 26 values is time consuming,
+
+39
+00:02:28.310 --> 00:02:31.080
+and difficult to change if we want
+to print something different, for
+
+40
+00:02:31.080 --> 00:02:33.020
+example, when looking at the output.
+
+41
+00:02:34.350 --> 00:02:39.870
+We'll use an array, an indexed collection,
+to use one variable in place of 26.
+
+42
+00:02:39.870 --> 00:02:44.020
+We'll break the Caesar cipher by
+counting occurrences of each character
+
+43
+00:02:44.020 --> 00:02:46.100
+in an encrypted message.
+
+44
+00:02:46.100 --> 00:02:49.110
+A message in English would
+typically have the letter e
+
+45
+00:02:49.110 --> 00:02:51.500
+as the most frequently
+occurring character.
+
+46
+00:02:51.500 --> 00:02:55.390
+So, once we found how many times each
+character occurs in an encrypted message
+
+47
+00:02:55.390 --> 00:02:59.640
+it's likely that this character is E,
+and we can determine the shift using
+
+48
+00:02:59.640 --> 00:03:03.740
+used them encrypting the message
+making the description process easy.
+
+49
+00:03:03.740 --> 00:03:08.280
+In general, counting and collecting values
+in an important tool in running programs,
+
+50
+00:03:08.280 --> 00:03:09.570
+so learning about arrays and
+
+51
+00:03:09.570 --> 00:03:14.440
+the context of breaking a Caesar cipher
+will help in solving many other problems.
+
+52
+00:03:14.440 --> 00:03:17.190
+You've seen the class storage resource,
+
+53
+00:03:17.190 --> 00:03:19.930
+which was helpful in
+storing string values.
+
+54
+00:03:19.930 --> 00:03:23.550
+That class was useful but
+it's use was limited.
+
+55
+00:03:23.550 --> 00:03:29.140
+We'll expand on the idea of arrays,
+and the storage resource class later.
+
+56
+00:03:29.140 --> 00:03:32.070
+For now, we need an indexed collection.
+
+57
+00:03:32.070 --> 00:03:34.620
+Like the collection of mailboxes we saw,
+
+58
+00:03:34.620 --> 00:03:38.260
+in which a number is used to
+access a specific location.
+
+59
+00:03:38.260 --> 00:03:42.830
+This is the same concept you've seen with
+strings, in which an index is used to
+
+60
+00:03:42.830 --> 00:03:49.170
+access a particular character in a string
+using the .charAt or .substring methods.
+
+61
+00:03:49.170 --> 00:03:54.500
+Arrays can store any type of value, not
+just the type char that's used in strings.
+
+62
+00:03:55.960 --> 00:03:58.940
+We'll look at the concepts and
+code in using arrays.
+
+63
+00:03:58.940 --> 00:04:01.850
+And see how they're similar to what
+you've seen before with strings.
+
+64
+00:04:03.140 --> 00:04:06.680
+You define an array similarly
+to defining a string.
+
+65
+00:04:08.110 --> 00:04:11.960
+When defining a string variable as you see
+here, you indicate the characters that
+
+66
+00:04:11.960 --> 00:04:16.120
+are in the string and
+assign these characters to a variable.
+
+67
+00:04:16.120 --> 00:04:20.240
+With an array, you must specify how
+many storage locations there are.
+
+68
+00:04:20.240 --> 00:04:22.960
+And use the square brackets
+with the variable name
+
+69
+00:04:22.960 --> 00:04:25.820
+to indicate the variable is an array.
+
+70
+00:04:25.820 --> 00:04:31.120
+This code allocates 256 memory locations,
+each one holding
+
+71
+00:04:31.120 --> 00:04:36.130
+an int with a value zero, which is
+the default value of integers in an array.
+
+72
+00:04:37.130 --> 00:04:43.090
+The concept of indexing is used to access
+elements of a string, and an array.
+
+73
+00:04:43.090 --> 00:04:44.100
+With a string,
+
+74
+00:04:44.100 --> 00:04:49.310
+the .charAt method is used with an index
+to access a specific character.
+
+75
+00:04:49.310 --> 00:04:53.280
+The first character is zero,
+because we use zero based indexing.
+
+76
+00:04:53.280 --> 00:04:58.390
+With arrays, the bracket operator
+acts as a specific element,
+
+77
+00:04:58.390 --> 00:05:01.540
+again with zero based indexing.
+
+78
+00:05:01.540 --> 00:05:06.190
+When writing code, you often need to know
+the number of characters in a string, or
+
+79
+00:05:06.190 --> 00:05:07.430
+the number of elements in an array.
+
+80
+00:05:08.440 --> 00:05:11.550
+With a string,
+you use the Dot Length method to
+
+81
+00:05:11.550 --> 00:05:14.670
+determine how many characters
+there are in the string.
+
+82
+00:05:14.670 --> 00:05:18.030
+With an array,
+you use the values stored in
+
+83
+00:05:18.030 --> 00:05:22.890
+Dot Length to access the number of storage
+locations allocated for the array.
+
+84
+00:05:22.890 --> 00:05:26.440
+Note that that length is not a method for
+arrays.
+
+85
+00:05:26.440 --> 00:05:29.140
+This is sometimes a source of
+confusion when writing code.
+
+86
+00:05:30.780 --> 00:05:33.510
+We'll look at the code to count
+the number of occurrences of
+
+87
+00:05:33.510 --> 00:05:34.780
+every character a through z.
+
+88
+00:05:34.780 --> 00:05:37.050
+You'll see this code and
+
+89
+00:05:37.050 --> 00:05:41.310
+the concepts in it will help you
+solve many problems when programming.
+
+90
+00:05:41.310 --> 00:05:42.510
+In this code,
+
+91
+00:05:42.510 --> 00:05:46.710
+you'll see a variable named counters that
+will represent 26 different counters.
+
+92
+00:05:46.710 --> 00:05:53.090
+The code will store the number of
+occurrences of a in counters subzero.
+
+93
+00:05:53.090 --> 00:05:57.290
+We use sub as a shorthand for subscript,
+a term coming from mathematics.
+
+94
+00:05:58.450 --> 00:06:02.630
+We'll see that counter sub k Is the number
+of occurrences of the kth letter.
+
+95
+00:06:02.630 --> 00:06:07.970
+By this we mean if the number
+of b's is at counter sub one and
+
+96
+00:06:07.970 --> 00:06:11.340
+the number of z's is a counters sub 25.
+
+97
+00:06:11.340 --> 00:06:16.200
+As you look at the code,
+you will see there at three parts.
+
+98
+00:06:16.200 --> 00:06:19.090
+Just as there were with the code that
+counted the number of occurrences
+
+99
+00:06:19.090 --> 00:06:21.230
+of c,g,a and t.
+
+100
+00:06:21.230 --> 00:06:22.490
+In the string representing DNA.
+
+101
+00:06:23.810 --> 00:06:28.440
+In that code, four counters were
+defined and initialized to the zero.
+
+102
+00:06:28.440 --> 00:06:32.310
+Here, there are 26 counters defined,
+and initialized to the zero.
+
+103
+00:06:32.310 --> 00:06:39.040
+The array reference are variable counters
+takes the place of 26 different variables.
+
+104
+00:06:40.480 --> 00:06:43.650
+In the DNA counting code,
+we used a sequence of four,
+
+105
+00:06:43.650 --> 00:06:46.490
+if statements to determine
+which counter to increment.
+
+106
+00:06:47.620 --> 00:06:52.570
+Here, we used the location of
+a character in the string alpha,
+
+107
+00:06:52.570 --> 00:06:56.120
+as the index of the appropriate
+counter to increment.
+
+108
+00:06:56.120 --> 00:06:57.850
+Note that A has index zero.
+
+109
+00:06:59.190 --> 00:07:05.650
+We even use both upper and lowercase As,
+using the Character.toLowerCase method,
+
+110
+00:07:05.650 --> 00:07:10.550
+so that the index value returned
+by alpha.indexOf helps us
+
+111
+00:07:10.550 --> 00:07:13.450
+increment the appropriate storage
+location in the counters array.
+
+112
+00:07:14.740 --> 00:07:20.940
+Finally, to print each result,
+we use the loop index K to both access
+
+113
+00:07:20.940 --> 00:07:25.960
+the kth value stored in alpha, and the kth
+value stored in the counters array.
+
+114
+00:07:27.760 --> 00:07:31.060
+You'll gain experience in
+solving problems with array.
+
+115
+00:07:31.060 --> 00:07:33.990
+Here's quick summary of
+what we've just introduced.
+
+116
+00:07:33.990 --> 00:07:37.040
+Arrays are indexed collections of values.
+
+117
+00:07:37.040 --> 00:07:40.000
+When defining an array, you will
+typically provide an integer value
+
+118
+00:07:40.000 --> 00:07:43.940
+indicating how many elements
+can be stored in the array.
+
+119
+00:07:43.940 --> 00:07:47.960
+It's possible to define a variable like x,
+as you see here,
+
+120
+00:07:47.960 --> 00:07:52.680
+with no storage allocated for it,
+simply to define the type of the variable.
+
+121
+00:07:52.680 --> 00:07:55.760
+This could be useful, for example,
+as a parameter in a method.
+
+122
+00:07:56.860 --> 00:08:00.780
+If you define an array by calling new
+you must provide an integer value for
+
+123
+00:08:00.780 --> 00:08:02.730
+the number of array elements.
+
+124
+00:08:02.730 --> 00:08:06.740
+In an int array,
+all locations will be initialized to zero.
+
+125
+00:08:06.740 --> 00:08:10.900
+For a string array, all array
+locations are initialized to null.
+
+126
+00:08:10.900 --> 00:08:13.860
+That is the value we have seen
+before that indicated there is no
+
+127
+00:08:13.860 --> 00:08:14.970
+object being referenced.
+
+128
+00:08:16.180 --> 00:08:20.290
+Array locations are red and
+written using indexes.
+
+129
+00:08:20.290 --> 00:08:23.850
+You can store a value in an array,
+as shown here.
+
+130
+00:08:23.850 --> 00:08:26.850
+With S sub 3 getting the string hello.
+
+131
+00:08:26.850 --> 00:08:30.220
+This is writing a value
+into an array location.
+
+132
+00:08:30.220 --> 00:08:34.550
+You can also access or
+read an array location, as shown here.
+
+133
+00:08:34.550 --> 00:08:37.290
+Well, on the right hand side of
+the assignment statement we see
+
+134
+00:08:37.290 --> 00:08:40.220
+x sub 3 is used to assign or
+
+135
+00:08:40.220 --> 00:08:44.600
+write to a value on the left hand side
+of your assignment statement x sub 2.
+
+136
+00:08:44.600 --> 00:08:49.810
+Once the storage is allocated for
+an array, the array size does not change.
+
+137
+00:08:49.810 --> 00:08:53.050
+This may be why.length is not a method but
+a value.
+
+138
+00:08:54.390 --> 00:08:56.510
+When an array is passed to a method,
+
+139
+00:08:56.510 --> 00:09:01.210
+the contents of the locations
+referenced by the array can change.
+
+140
+00:09:01.210 --> 00:09:05.570
+This is subtle, and you'll see examples of
+it when we use arrays to solve problems.
+
+141
+00:09:05.570 --> 00:09:06.340
+Have fun coding.

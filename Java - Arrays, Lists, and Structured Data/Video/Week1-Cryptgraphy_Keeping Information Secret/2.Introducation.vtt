@@ -1,0 +1,440 @@
+WEBVTT
+
+1
+00:00:03.058 --> 00:00:04.310
+Welcome back.
+
+2
+00:00:04.310 --> 00:00:08.140
+Now that you know a bit about the
+importance of cryptography, it is time for
+
+3
+00:00:08.140 --> 00:00:11.870
+you to learn a bit more about
+the concepts of the Caesar Cipher
+
+4
+00:00:11.870 --> 00:00:13.400
+which you will implement in this lesson.
+
+5
+00:00:14.410 --> 00:00:18.980
+Suppose you are in a battle and you wanted
+to send a message to your sub commanders
+
+6
+00:00:18.980 --> 00:00:22.010
+to tell the first legion
+to attack the east flank.
+
+7
+00:00:23.200 --> 00:00:28.120
+You don't want your enemies to know your
+plan even if they intercept this message.
+
+8
+00:00:28.120 --> 00:00:31.670
+So, you encrypt it with your cipher
+as shown on the second line.
+
+9
+00:00:32.840 --> 00:00:35.090
+The Caesar Cipher algorithm is named for
+
+10
+00:00:35.090 --> 00:00:38.530
+Julius Caesar,
+the famous Roman emperor who used it.
+
+11
+00:00:39.640 --> 00:00:43.190
+The basic idea of this algorithm
+is to substitute each letter with
+
+12
+00:00:43.190 --> 00:00:47.840
+the letter obtained by shifting
+the alphabet by a fixed amount.
+
+13
+00:00:47.840 --> 00:00:50.980
+That is a specific number of
+letters later in the alphabet.
+
+14
+00:00:52.080 --> 00:00:56.210
+The amount you shift the alphabet
+by is the key for this cipher.
+
+15
+00:00:56.210 --> 00:01:00.180
+Julius Caesar used a shift
+of three letters prior.
+
+16
+00:01:00.180 --> 00:01:03.840
+Which if you think of the algorithm in
+terms of shifting to a later letter will
+
+17
+00:01:03.840 --> 00:01:06.220
+be the same as 23 letters later.
+
+18
+00:01:06.220 --> 00:01:09.200
+To see how this algorithm works
+
+19
+00:01:09.200 --> 00:01:12.830
+we'll walk through an example
+of encrypting this message.
+
+20
+00:01:12.830 --> 00:01:15.520
+We'll use the alphabet to show
+how letters are encrypted.
+
+21
+00:01:15.520 --> 00:01:18.890
+The first letter of the message is F.
+
+22
+00:01:18.890 --> 00:01:22.180
+We find the letter F in
+the alphabet here and
+
+23
+00:01:22.180 --> 00:01:25.050
+then we go backwards three letters,
+E, D, C.
+
+24
+00:01:25.050 --> 00:01:28.540
+So you would write down a C as
+the first letter of your message.
+
+25
+00:01:28.540 --> 00:01:31.140
+The next letter is I.
+
+26
+00:01:31.140 --> 00:01:36.560
+We find the letter I in the alphabet here
+and then we go backwards three letters, H,
+
+27
+00:01:36.560 --> 00:01:40.340
+G, F, writing down F as
+the next letter of the message.
+
+28
+00:01:40.340 --> 00:01:41.830
+The next letter is R.
+
+29
+00:01:41.830 --> 00:01:44.720
+We find the letter R in the alphabet here.
+
+30
+00:01:44.720 --> 00:01:47.136
+Again, go backwards three letters, Q,
+
+31
+00:01:47.136 --> 00:01:50.950
+P,O writing down O as the next
+letter of the message.
+
+32
+00:01:50.950 --> 00:01:54.150
+You would continue the same way
+through the first word and then,
+
+33
+00:01:54.150 --> 00:01:55.780
+you would get to a space.
+
+34
+00:01:55.780 --> 00:01:59.530
+Doing this by hand as Caesar would
+have done, the easiest thing to do
+
+35
+00:01:59.530 --> 00:02:02.890
+is leave the space unchanged and
+write down a space in your message.
+
+36
+00:02:03.980 --> 00:02:06.860
+The next word in space
+proceed in the same way.
+
+37
+00:02:06.860 --> 00:02:10.510
+However, what happens when you get to A?
+
+38
+00:02:10.510 --> 00:02:14.200
+We find A here,
+it is the first letter in the alphabet.
+
+39
+00:02:14.200 --> 00:02:17.270
+But how do you go three letters backwards?
+
+40
+00:02:17.270 --> 00:02:20.020
+You have to wrap around to
+the end of the alphabet.
+
+41
+00:02:20.020 --> 00:02:23.860
+From there you go three
+letters backwards to Z, Y, X,
+
+42
+00:02:23.860 --> 00:02:26.980
+writing down X as the next letter.
+
+43
+00:02:26.980 --> 00:02:29.910
+You continue through the rest
+of the message in the same way!
+
+44
+00:02:29.910 --> 00:02:33.420
+And end up with something that is
+unintelligible under casual scrutiny.
+
+45
+00:02:34.510 --> 00:02:39.450
+However, if you know, or
+can figure out the key.
+
+46
+00:02:39.450 --> 00:02:40.580
+You can decrypt the message.
+
+47
+00:02:40.580 --> 00:02:45.010
+The process is the same as encrypting,
+with a key of 26 minus N.
+
+48
+00:02:46.200 --> 00:02:47.450
+So, how do you actually do this?
+
+49
+00:02:47.450 --> 00:02:51.010
+One way: math on letters.
+
+50
+00:02:51.010 --> 00:02:53.770
+If you took our Coursera course,
+programming, and the web for
+
+51
+00:02:53.770 --> 00:02:57.860
+beginners, you should remember
+that everything is a number.
+
+52
+00:02:57.860 --> 00:02:59.800
+If you're not familiar with this concept,
+
+53
+00:02:59.800 --> 00:03:05.440
+it is very important in computer science,
+as computers can only work with numbers.
+
+54
+00:03:05.440 --> 00:03:06.470
+In this case,
+
+55
+00:03:06.470 --> 00:03:10.890
+that principle says that these letter
+are actually represented as numbers.
+
+56
+00:03:10.890 --> 00:03:12.530
+So you can do math on them.
+
+57
+00:03:13.630 --> 00:03:17.290
+In particular, you could tell Java
+to subtract 3 from the letter F and
+
+58
+00:03:17.290 --> 00:03:20.520
+it would compute the letter C.
+
+59
+00:03:20.520 --> 00:03:23.300
+However, what if you subtracted
+three from the letter A?
+
+60
+00:03:24.370 --> 00:03:29.170
+Java would not know that you wanna wrap
+around and stay only within the alphabet.
+
+61
+00:03:29.170 --> 00:03:33.450
+So you would have to include some
+more mathematical operations or
+
+62
+00:03:33.450 --> 00:03:35.880
+a conditional statement to wrap around and
+get X.
+
+63
+00:03:37.320 --> 00:03:41.128
+Another way you could do this, which
+makes the wrap around case a bit cleaner,
+
+64
+00:03:41.128 --> 00:03:43.770
+is to pre-shift the entire alphabet.
+
+65
+00:03:44.800 --> 00:03:47.770
+That is compute the shifts
+of each letter at the start,
+
+66
+00:03:47.770 --> 00:03:50.400
+before you try to encrypt
+anything in the message.
+
+67
+00:03:50.400 --> 00:03:52.960
+For example,
+you could take the alphabet and for
+
+68
+00:03:52.960 --> 00:03:57.380
+a shift of three to the left,
+computer string like this one.
+
+69
+00:03:57.380 --> 00:04:00.910
+We will see the details of how
+to do this in a future video.
+
+70
+00:04:00.910 --> 00:04:03.910
+However, once you have
+computed these strings,
+
+71
+00:04:03.910 --> 00:04:07.880
+You can use them to look up
+the encryption of each letter.
+
+72
+00:04:07.880 --> 00:04:12.790
+For the f at the start of the message you
+want to find f in the original alphabet.
+
+73
+00:04:12.790 --> 00:04:16.120
+Think for a moment about what you have
+learned about strings in the past.
+
+74
+00:04:17.160 --> 00:04:19.580
+What method might you use to find F?
+
+75
+00:04:21.400 --> 00:04:25.020
+Once you have found F, you look at
+the letter in the same position
+
+76
+00:04:25.020 --> 00:04:27.100
+in the shifted alphabet which is C.
+
+77
+00:04:27.100 --> 00:04:30.500
+Then you write down that letter
+in your encrypted message.
+
+78
+00:04:31.590 --> 00:04:36.320
+For A which wraps around to X,
+you do not have any special case.
+
+79
+00:04:36.320 --> 00:04:40.500
+Again, you just find A in the original
+alphabet, look at the letter in the same
+
+80
+00:04:40.500 --> 00:04:44.620
+position in the shifted alphabet,
+in this case that letter X.
+
+81
+00:04:44.620 --> 00:04:46.610
+So you write down X in
+your encrypted message.
+
+82
+00:04:48.250 --> 00:04:52.860
+Great, now you know the basic
+ideas behind a Caesar Cipher.
+
+83
+00:04:52.860 --> 00:04:55.170
+However, before your
+implement this algorithm,
+
+84
+00:04:55.170 --> 00:04:57.460
+you will need to learn
+a few new Java concepts.
+
+85
+00:04:57.460 --> 00:05:02.140
+You're going to learn some new
+ways to manipulate strings.
+
+86
+00:05:02.140 --> 00:05:05.460
+As well as for
+loops which count over a range of numbers.
+
+87
+00:05:06.490 --> 00:05:10.790
+For loops which count over ranges of
+numbers are particularly important
+
+88
+00:05:10.790 --> 00:05:14.800
+as you will use the numbers
+you count to index into data,
+
+89
+00:05:14.800 --> 00:05:18.230
+manipulating particular
+locations in the sequence.
+
+90
+00:05:18.230 --> 00:05:21.570
+You are familiar with strings,
+which are sequences of characters.
+
+91
+00:05:21.570 --> 00:05:25.520
+But we'll learn about the new types of
+sequences in the rest of this course.
+
+92
+00:05:25.520 --> 00:05:28.400
+So you will use for loops a lot.
+
+93
+00:05:28.400 --> 00:05:28.900
+Thank you.

@@ -1,0 +1,265 @@
+WEBVTT
+
+1
+00:00:03.171 --> 00:00:06.887
+Hi, as you get ready to start the program
+to create stories from templates,
+
+2
+00:00:06.887 --> 00:00:10.560
+let's summarize what you've learned
+about the ArrayList class in Java.
+
+3
+00:00:11.630 --> 00:00:13.510
+ArrayLists are like arrays.
+
+4
+00:00:13.510 --> 00:00:15.390
+Both are indexable collections,
+
+5
+00:00:15.390 --> 00:00:19.150
+allowing you to access elements
+with an integer index.
+
+6
+00:00:19.150 --> 00:00:22.530
+ArrayList can grow as
+elements are added to it.
+
+7
+00:00:22.530 --> 00:00:27.200
+This means you don't need to know in
+advance how much space to allocate for
+
+8
+00:00:27.200 --> 00:00:29.010
+an ArrayList like you did for an array.
+
+9
+00:00:30.550 --> 00:00:31.900
+Like arrays, and
+
+10
+00:00:31.900 --> 00:00:36.920
+individual string elements,
+indexing in an ArrayList starts with zero.
+
+11
+00:00:36.920 --> 00:00:41.060
+It takes the same amount of time to access
+the first element of an ArrayList or
+
+12
+00:00:41.060 --> 00:00:45.170
+an array, as it does to access
+the ten thousandth element.
+
+13
+00:00:45.170 --> 00:00:49.110
+It might help you to think of
+ArrayLists as a collection of boxes,
+
+14
+00:00:49.110 --> 00:00:50.660
+each addressable with a number.
+
+15
+00:00:52.680 --> 00:00:57.380
+To use the ArrayList class, you must
+import it from the java.util package.
+
+16
+00:00:57.380 --> 00:01:03.200
+You can import just the ArrayList class,
+or use the asterisk and import java.util.*
+
+17
+00:01:03.200 --> 00:01:07.620
+to gain access to all of the classes
+in the package, like the random class.
+
+18
+00:01:08.760 --> 00:01:09.990
+When you create an ArrayList,
+
+19
+00:01:09.990 --> 00:01:13.120
+you specify the type of elements
+stored in the ArrayList.
+
+20
+00:01:13.120 --> 00:01:17.529
+Using the angle bracket syntax that Java
+uses for generic or general elements.
+
+21
+00:01:18.620 --> 00:01:22.740
+Here you see an ArrayList that
+can contain string objects.
+
+22
+00:01:22.740 --> 00:01:26.890
+But ArrayLists can also
+store integer objects, too.
+
+23
+00:01:26.890 --> 00:01:32.130
+Though the list must store integers or
+strings, not the same type in one list.
+
+24
+00:01:33.760 --> 00:01:37.680
+The integer class allows int
+values like zero or 57, or
+
+25
+00:01:37.680 --> 00:01:40.720
+negative 352 to be
+stored in the ArrayList.
+
+26
+00:01:40.720 --> 00:01:45.440
+The integer class automatically converts
+an int value like 57 into a value
+
+27
+00:01:45.440 --> 00:01:47.250
+stored as an integer object.
+
+28
+00:01:48.330 --> 00:01:51.500
+You've seen several methods
+used in ArrayList objects.
+
+29
+00:01:51.500 --> 00:01:54.940
+The .add method adds an element
+to the end of an ArrayList.
+
+30
+00:01:54.940 --> 00:01:57.520
+The ArrayList grows as needed.
+
+31
+00:01:57.520 --> 00:02:01.460
+The .size method returns the number
+of elements stored in an ArrayList.
+
+32
+00:02:01.460 --> 00:02:06.530
+Typically this is the number
+of elements added via .add.
+
+33
+00:02:06.530 --> 00:02:10.500
+You can write code to access
+individual elements with and
+
+34
+00:02:10.500 --> 00:02:14.680
+integer index using the .get method and
+
+35
+00:02:14.680 --> 00:02:18.890
+you can change the value stored at
+a specific index using the .set method.
+
+36
+00:02:20.940 --> 00:02:25.600
+ArrayLists are typically processed and
+accessed using loops.
+
+37
+00:02:25.600 --> 00:02:29.728
+Here's a typical indexing loop that
+processes each element of an ArrayList.
+
+38
+00:02:29.728 --> 00:02:33.140
+This for loops typically started 0 and
+
+39
+00:02:33.140 --> 00:02:39.530
+loop to less than a size of an ArrayList,
+which is exactly .size elements.
+
+40
+00:02:39.530 --> 00:02:44.480
+Within the loop, each array element is
+accessed using the dot get method and
+
+41
+00:02:44.480 --> 00:02:45.660
+the loop index variable.
+
+42
+00:02:47.040 --> 00:02:51.154
+When accessing array elements in
+a loop like this do not call .add or
+
+43
+00:02:51.154 --> 00:02:54.670
+.remove which will change
+the size that the loop iterates.
+
+44
+00:02:54.670 --> 00:02:57.240
+Typically causing
+a problem in your algorithm
+
+45
+00:02:57.240 --> 00:03:01.180
+because you will either skip elements or
+access invalid elements.
+
+46
+00:03:04.340 --> 00:03:07.840
+You can also access the elements
+in an array with an iterable loop,
+
+47
+00:03:07.840 --> 00:03:12.870
+the same kind of loop we used with
+the edu.duke iterable classes.
+
+48
+00:03:12.870 --> 00:03:18.580
+In an iterable loop, your code indicates
+the type of value stored in the ArrayList.
+
+49
+00:03:18.580 --> 00:03:22.750
+Your loop takes on each value stored
+in the ArrayList one at a time,
+
+50
+00:03:22.750 --> 00:03:26.330
+just as with the file resource or
+image resource classes.
+
+51
+00:03:26.330 --> 00:03:28.970
+You can use this kind of
+loop when you don't need
+
+52
+00:03:28.970 --> 00:03:33.340
+the index of each ArrayList element but
+just the element itself.
+
+53
+00:03:33.340 --> 00:03:38.890
+Just as with an indexing loop, do not call
+.add or .remove with an iterable loop.
+
+54
+00:03:38.890 --> 00:03:41.640
+In this case, Java will generate
+a run time error if you try.
+
+55
+00:03:42.810 --> 00:03:45.560
+ArrayLists are a very useful
+tool when used properly.

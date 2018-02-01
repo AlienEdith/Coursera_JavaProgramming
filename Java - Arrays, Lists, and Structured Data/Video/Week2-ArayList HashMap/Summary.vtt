@@ -1,0 +1,257 @@
+WEBVTT
+
+1
+00:00:03.184 --> 00:00:07.944
+Hello, let's summarize what you've had
+the opportunity to learn studying our
+
+2
+00:00:07.944 --> 00:00:10.630
+GladLib example of creative storytelling.
+
+3
+00:00:10.630 --> 00:00:14.590
+The GladLib.java program
+read templates from files or
+
+4
+00:00:14.590 --> 00:00:19.750
+URLs to create engaging stories
+about any topic you chose.
+
+5
+00:00:19.750 --> 00:00:25.300
+We use the program to motivate the need
+for and study of the ArrayList class.
+
+6
+00:00:25.300 --> 00:00:30.748
+Array lists are like arrays in that they
+support indexing to individual elements,
+
+7
+00:00:30.748 --> 00:00:35.859
+but an ArrayList object can grow as
+needed rather than being a fixed size.
+
+8
+00:00:37.120 --> 00:00:41.380
+We also use the program to motivate
+the study of the HashMap class.
+
+9
+00:00:41.380 --> 00:00:45.510
+HashMaps are very efficient structures
+that can be used to associate
+
+10
+00:00:45.510 --> 00:00:47.680
+keys with values.
+
+11
+00:00:47.680 --> 00:00:50.979
+You saw two examples of this
+in study of the GladLib class.
+
+12
+00:00:52.718 --> 00:00:57.060
+We also use the GladLib class as
+a small case study to understand
+
+13
+00:00:57.060 --> 00:01:01.740
+that creating code and programs that
+are extensible is a good idea but
+
+14
+00:01:01.740 --> 00:01:04.530
+requires thinking,
+planning, and experience.
+
+15
+00:01:06.370 --> 00:01:09.795
+We use the GladLib class to
+study the ArrayList class.
+
+16
+00:01:09.795 --> 00:01:14.050
+An ArrayList object is an indexable
+collection of elements.
+
+17
+00:01:14.050 --> 00:01:18.940
+ArrayLists store primitive types, so
+you can store integer objects, but
+
+18
+00:01:18.940 --> 00:01:20.960
+not int values.
+
+19
+00:01:20.960 --> 00:01:26.450
+This means you often need to update
+ArrayList integer values in two steps.
+
+20
+00:01:26.450 --> 00:01:28.000
+First, getting the value and
+
+21
+00:01:28.000 --> 00:01:30.720
+updating it, and
+then putting that value back in the map.
+
+22
+00:01:32.240 --> 00:01:37.010
+To use the ArrayList class, you must
+import it from the java.util package.
+
+23
+00:01:37.010 --> 00:01:41.437
+In contrast, you don't need to
+specify a package for arrays.
+
+24
+00:01:41.437 --> 00:01:44.464
+Useful methods you've seen include add(),
+
+25
+00:01:44.464 --> 00:01:47.496
+to add a new element to
+the end of the ArrayList.
+
+26
+00:01:47.496 --> 00:01:51.254
+Size(), to determine the number
+of elements in an ArrayList.
+
+27
+00:01:51.254 --> 00:01:54.619
+Get(), to access an element by its index.
+
+28
+00:01:54.619 --> 00:01:58.720
+Set(), to update an element
+using its index.
+
+29
+00:01:58.720 --> 00:02:02.630
+And indexOf(),
+to determine where an element is stored
+
+30
+00:02:02.630 --> 00:02:06.310
+in an ArrayList by index.
+
+31
+00:02:06.310 --> 00:02:10.670
+You can write code to loop over
+all elements in an ArrayList
+
+32
+00:02:10.670 --> 00:02:15.260
+by either using an ArrayList
+object as an iterable, or
+
+33
+00:02:15.260 --> 00:02:19.310
+using an Int for loop,
+starting at zero and looping up to, but
+
+34
+00:02:19.310 --> 00:02:24.400
+not including, the size of the array
+to access each element by its index.
+
+35
+00:02:25.470 --> 00:02:27.960
+We also studied the HashMap class.
+
+36
+00:02:27.960 --> 00:02:31.870
+A HashMap object is a collection
+of (key,value) pairs.
+
+37
+00:02:31.870 --> 00:02:37.160
+The keys serve as mappings for accessing
+the values, hence the name HashMap.
+
+38
+00:02:37.160 --> 00:02:40.200
+Both keys and values are objects, so
+
+39
+00:02:40.200 --> 00:02:45.060
+you would use Integer rather than int,
+just as you did for the ArrayList.
+
+40
+00:02:45.060 --> 00:02:49.640
+Keys are best as immutable objects,
+like String or Integer.
+
+41
+00:02:49.640 --> 00:02:50.650
+Keys must be unique.
+
+42
+00:02:52.180 --> 00:02:55.300
+Values can be any object type,
+including String or
+
+43
+00:02:55.300 --> 00:02:57.540
+ArrayList as in the examples you saw.
+
+44
+00:02:58.600 --> 00:03:03.693
+You import HashMap from java.util just
+as you do for the ArrayList class.
+
+45
+00:03:03.693 --> 00:03:10.240
+In the examples, you saw the methods
+put(), to add a key value pair to the map.
+
+46
+00:03:10.240 --> 00:03:14.240
+Size(), to determine the number
+of pairs or keys in a map.
+
+47
+00:03:14.240 --> 00:03:17.274
+Get() to access a value by it's key.
+
+48
+00:03:17.274 --> 00:03:20.143
+KeySet(), to iterate
+over all the elements.
+
+49
+00:03:20.143 --> 00:03:23.540
+And ContainsKey(),
+to determine if a key is in the map.
+
+50
+00:03:24.820 --> 00:03:29.490
+Looping over all elements requires
+an iterable over the key set of the map.
+
+51
+00:03:29.490 --> 00:03:33.500
+You can't access individual
+elements one at a time by an index
+
+52
+00:03:33.500 --> 00:03:34.925
+as you can with the ArrayList.
+
+53
+00:03:36.300 --> 00:03:40.110
+Two different collections with
+two different sets of strengths.
+
+54
+00:03:40.110 --> 00:03:41.320
+We hope you'll have fun using them.

@@ -1,0 +1,463 @@
+WEBVTT
+
+1
+00:00:03.403 --> 00:00:04.390
+Welcome back.
+
+2
+00:00:04.390 --> 00:00:07.240
+Now that you know a little bit
+about how a Caesar Cipher works,
+
+3
+00:00:07.240 --> 00:00:11.570
+it is time to expand your Java
+knowledge so you can implement one.
+
+4
+00:00:11.570 --> 00:00:13.660
+You should know something
+about strings already.
+
+5
+00:00:13.660 --> 00:00:16.350
+If you took our previous course,
+Java Programming,
+
+6
+00:00:16.350 --> 00:00:20.110
+Solving Problems with Software,
+you learned how to manipulate strings.
+
+7
+00:00:20.110 --> 00:00:21.680
+If you are unfamiliar with strings,
+
+8
+00:00:21.680 --> 00:00:24.350
+we recommend you brush up
+on them before proceeding.
+
+9
+00:00:25.450 --> 00:00:27.170
+However, to perform encryption,
+
+10
+00:00:27.170 --> 00:00:30.900
+you need to do something with strings that
+you did not do in the previous course.
+
+11
+00:00:30.900 --> 00:00:33.700
+In that course,
+you analyzed the contents of strings and
+
+12
+00:00:33.700 --> 00:00:36.150
+operated on pieces of existing strings.
+
+13
+00:00:36.150 --> 00:00:39.030
+However, you did not build up new strings.
+
+14
+00:00:39.030 --> 00:00:43.870
+If you carefully reexamine what you
+saw about how a Caeser cipher works,
+
+15
+00:00:43.870 --> 00:00:47.820
+you will see that you are making a new
+string by adding one character at a time.
+
+16
+00:00:47.820 --> 00:00:51.840
+One way that you can build up
+a string is with concatenation,
+
+17
+00:00:51.840 --> 00:00:54.580
+which is a fancy word for
+sticking things together.
+
+18
+00:00:54.580 --> 00:00:59.510
+In Java, you can perform string
+concatenation with the plus operator,
+
+19
+00:00:59.510 --> 00:01:01.968
+whenever at least one operand is a string.
+
+20
+00:01:01.968 --> 00:01:06.920
+If one operand is a string but the other
+is not, than the concatenation operator
+
+21
+00:01:06.920 --> 00:01:10.650
+figures out the string representation
+of the non-string operand and
+
+22
+00:01:10.650 --> 00:01:11.420
+concatenates that.
+
+23
+00:01:12.460 --> 00:01:16.410
+For example, if you were to write these
+two strings with the plus operator
+
+24
+00:01:16.410 --> 00:01:21.700
+between them, you would be telling
+Java to perform string concatenation.
+
+25
+00:01:21.700 --> 00:01:26.580
+The result would be the string you see
+here, which was formed by sticking these
+
+26
+00:01:26.580 --> 00:01:29.610
+strings together,
+exactly what concatenation means.
+
+27
+00:01:30.680 --> 00:01:33.130
+To illustrate the usefulness
+of this operation,
+
+28
+00:01:33.130 --> 00:01:35.740
+think about the Caesar Cipher
+you're working on.
+
+29
+00:01:35.740 --> 00:01:39.750
+You might want to take the original
+alphabet, as a string, and
+
+30
+00:01:39.750 --> 00:01:42.980
+make a rearranged alphabet
+based on the key.
+
+31
+00:01:42.980 --> 00:01:46.620
+You could do that by taking
+two pieces with substring,
+
+32
+00:01:46.620 --> 00:01:49.530
+which we're already familiar with,
+and concatenating them together.
+
+33
+00:01:50.760 --> 00:01:53.420
+First, you would take
+the substring starting at 23.
+
+34
+00:01:53.420 --> 00:01:57.930
+Remember the substring with only one
+argument returns the substring starting at
+
+35
+00:01:57.930 --> 00:02:00.519
+the specified position and going all
+the way to the end of the string.
+
+36
+00:02:01.690 --> 00:02:06.170
+Then you would concatenate the sub
+string from zero to 23 onto the end of
+
+37
+00:02:06.170 --> 00:02:07.850
+that string.
+
+38
+00:02:07.850 --> 00:02:12.030
+Now you have two strings which
+describe the mapping from each
+
+39
+00:02:12.030 --> 00:02:15.870
+plain text letter to
+the appropriate cipher text letter.
+
+40
+00:02:15.870 --> 00:02:18.830
+We did this for the key of 23,
+but you should think for
+
+41
+00:02:18.830 --> 00:02:22.979
+a moment about how you would
+generalize this for other keys.
+
+42
+00:02:24.130 --> 00:02:26.010
+As you learn more about
+manipulating strings,
+
+43
+00:02:26.010 --> 00:02:28.400
+it is important to know
+that they are immutable.
+
+44
+00:02:28.400 --> 00:02:32.070
+You cannot change an existing
+string once it has been created.
+
+45
+00:02:32.070 --> 00:02:37.730
+Instead, if you want a different string,
+you must make a new one with that change.
+
+46
+00:02:37.730 --> 00:02:40.430
+This concept may seem a bit confusing and
+subtle, so
+
+47
+00:02:40.430 --> 00:02:41.649
+it helps to see it with a picture.
+
+48
+00:02:42.850 --> 00:02:46.350
+Here we have declared a string and
+initialized it to hello.
+
+49
+00:02:46.350 --> 00:02:48.500
+Nothing new or surprising here.
+
+50
+00:02:48.500 --> 00:02:51.260
+A common practice is to draw a picture
+
+51
+00:02:51.260 --> 00:02:56.100
+of the effect of this statement by
+drawing a box for the variable s, and
+
+52
+00:02:56.100 --> 00:02:59.270
+making an arrow pointing to the letters
+that make up the string hello.
+
+53
+00:03:00.550 --> 00:03:02.430
+If you declare another string x, and
+
+54
+00:03:02.430 --> 00:03:07.450
+initialize it with s, you would have
+a picture that looks like this.
+
+55
+00:03:07.450 --> 00:03:10.023
+Both x and s refer to the same string.
+
+56
+00:03:11.973 --> 00:03:17.950
+Now suppose you did s = s + World.
+
+57
+00:03:17.950 --> 00:03:23.420
+That is you compute s concatenated
+with the string, space World.
+
+58
+00:03:23.420 --> 00:03:28.130
+You are not changing the existing String,
+but rather making another String,
+
+59
+00:03:28.130 --> 00:03:34.420
+which involves,
+copying the existing Strings like this.
+
+60
+00:03:34.420 --> 00:03:38.700
+Notice that x is still Hello, cause you
+did not change the existing String,
+
+61
+00:03:38.700 --> 00:03:41.899
+you made a different String and
+assigned it to s.
+
+62
+00:03:43.210 --> 00:03:47.220
+If you do a lot of string concatenation
+operations, on large strings especially,
+
+63
+00:03:47.220 --> 00:03:50.030
+the required copying can be quite slow and
+inefficient.
+
+64
+00:03:50.030 --> 00:03:54.370
+Even though we are not terribly focused on
+the most efficient way to do things yet,
+
+65
+00:03:54.370 --> 00:03:58.040
+it is still a good practice
+to develop good habits.
+
+66
+00:03:59.240 --> 00:04:03.850
+If you are building large strings
+by adding many small pieces,
+
+67
+00:04:03.850 --> 00:04:05.390
+you wanna use a different approach.
+
+68
+00:04:07.010 --> 00:04:11.290
+In fact, Java has a StringBuilder
+class specifically for this purpose.
+
+69
+00:04:11.290 --> 00:04:13.990
+It provides a mutable
+sequence of characters.
+
+70
+00:04:13.990 --> 00:04:17.440
+Meaning, it is like a string but
+you can modify it, changing and
+
+71
+00:04:17.440 --> 00:04:19.450
+inserting characters in an efficient way.
+
+72
+00:04:20.520 --> 00:04:23.990
+When you create a new
+StringBuilder you can pass a string
+
+73
+00:04:23.990 --> 00:04:26.640
+in to specify its initial contents.
+
+74
+00:04:26.640 --> 00:04:29.280
+There are also many useful methods.
+
+75
+00:04:29.280 --> 00:04:33.190
+We will name just a few of the most
+important ones, but recommend you consult
+
+76
+00:04:33.190 --> 00:04:37.480
+the API documentation for
+a full list and more details.
+
+77
+00:04:37.480 --> 00:04:41.600
+One useful method is append,
+which lets you put a string on the end.
+
+78
+00:04:41.600 --> 00:04:43.240
+You could also pass in
+other types of data,
+
+79
+00:04:43.240 --> 00:04:46.390
+which will be converted to a string
+before being added to the end.
+
+80
+00:04:47.420 --> 00:04:49.240
+You could insert a string or
+
+81
+00:04:49.240 --> 00:04:53.160
+the string representation of other
+types of data at any location you want.
+
+82
+00:04:53.160 --> 00:04:57.190
+You can get or
+set individual characters by their index,
+
+83
+00:04:57.190 --> 00:05:01.030
+the numerical location where they
+are in the sequence of characters.
+
+84
+00:05:01.030 --> 00:05:04.140
+When you are done manipulating
+the string buffer,
+
+85
+00:05:04.140 --> 00:05:07.720
+you will often want to use toString
+to get the string you have made.
+
+86
+00:05:09.230 --> 00:05:12.920
+As before, it helps to see a picture
+of how these methods operate.
+
+87
+00:05:12.920 --> 00:05:17.180
+Here we have started by creating a string
+builder and passing in the string Hello.
+
+88
+00:05:17.180 --> 00:05:20.840
+We have drawn this picture with sb having
+an arrow pointing to the sequence of
+
+89
+00:05:20.840 --> 00:05:22.160
+characters in the string builder.
+
+90
+00:05:23.210 --> 00:05:25.900
+Now if you call sb.append and
+
+91
+00:05:25.900 --> 00:05:30.160
+pass in world you will modify
+the existing sequence of characters.
+
+92
+00:05:30.160 --> 00:05:33.700
+Notice how we changed the existing
+sequence rather than copying them into
+
+93
+00:05:33.700 --> 00:05:35.140
+a new sequence.
+
+94
+00:05:35.140 --> 00:05:39.320
+You can also insert or
+put the characters into the middle,
+
+95
+00:05:39.320 --> 00:05:43.620
+which would still modify the same
+sequence of characters like this.
+
+96
+00:05:43.620 --> 00:05:44.240
+Great.
+
+97
+00:05:44.240 --> 00:05:46.800
+Now you know how to build up
+strings from smaller pieces.

@@ -1,0 +1,573 @@
+WEBVTT
+
+1
+00:00:03.347 --> 00:00:07.620
+Hi it's time to learn about
+a new way of structuring data.
+
+2
+00:00:07.620 --> 00:00:10.270
+This also helps in structuring classes.
+
+3
+00:00:10.270 --> 00:00:14.180
+You've seen some of the concerns with
+the design of the GladLib class.
+
+4
+00:00:14.180 --> 00:00:18.040
+The design has flaws but
+you still were able to add a new label and
+
+5
+00:00:18.040 --> 00:00:20.510
+create new stories, so the design works.
+
+6
+00:00:21.520 --> 00:00:25.430
+Larger programs with the same
+flaws might be harder to modify.
+
+7
+00:00:25.430 --> 00:00:29.730
+You've also seen code account
+nucleotides in a strand of DNA and
+
+8
+00:00:29.730 --> 00:00:32.690
+letter frequencies to
+break a Caesar Cipher.
+
+9
+00:00:32.690 --> 00:00:36.540
+We extended this idea to counting
+word frequencies in any file
+
+10
+00:00:36.540 --> 00:00:38.650
+with two parallel arrays.
+
+11
+00:00:38.650 --> 00:00:43.730
+To count nucleotides we used four int
+variables to count each time a C, G, T,
+
+12
+00:00:43.730 --> 00:00:44.640
+or A occurred.
+
+13
+00:00:44.640 --> 00:00:49.320
+To count letter frequencies we
+used an array of 26 int values.
+
+14
+00:00:49.320 --> 00:00:51.820
+One for each letter A through Z.
+
+15
+00:00:53.170 --> 00:00:56.640
+To count words you saw code that
+used two parallel ArrayLists.
+
+16
+00:00:56.640 --> 00:01:01.216
+These contained as many values as there
+are different words being counted.
+
+17
+00:01:01.216 --> 00:01:05.260
+Now you'll see how to use
+the concept of parallel ArrayList,
+
+18
+00:01:05.260 --> 00:01:08.781
+to help understand
+the java.util.hashmap class.
+
+19
+00:01:08.781 --> 00:01:10.060
+A new way to structure data.
+
+20
+00:01:11.090 --> 00:01:15.256
+Using HashMap we'll make it much
+easier to modify the GladLib class.
+
+21
+00:01:15.256 --> 00:01:22.240
+The HashMap class is also very efficient,
+compared to using two parallel ArrayLists.
+
+22
+00:01:22.240 --> 00:01:27.230
+We'll explain the HashMap class using
+the parallel ArrayList class to help.
+
+23
+00:01:27.230 --> 00:01:32.240
+We've had a chance to see this code
+that uses two ArrayLists to count how
+
+24
+00:01:32.240 --> 00:01:34.178
+many times each different
+word occurs in a file.
+
+25
+00:01:34.178 --> 00:01:38.260
+The method .indexOf finds
+the location of a word
+
+26
+00:01:38.260 --> 00:01:40.720
+in the ArrayLists of stings named myWords.
+
+27
+00:01:41.750 --> 00:01:44.910
+If the value returned by
+the .index sub is minus one
+
+28
+00:01:44.910 --> 00:01:48.280
+then the string read from the file
+hasn't been seen before and
+
+29
+00:01:48.280 --> 00:01:53.210
+it's stored in my words with
+a corresponding count of one in myFreqs.
+
+30
+00:01:53.210 --> 00:01:55.190
+If the string has been seen before,
+
+31
+00:01:55.190 --> 00:01:59.430
+the integer value in myFreqs at
+the same index is incremented by one.
+
+32
+00:01:59.430 --> 00:02:04.040
+This code works, but, using a HashMap
+will make the code much faster.
+
+33
+00:02:04.040 --> 00:02:09.280
+And the HashMap class will make it easier
+to modify the GladLib class as well.
+
+34
+00:02:09.280 --> 00:02:12.550
+Let's work to understand
+the concepts in the HashMap class.
+
+35
+00:02:13.590 --> 00:02:16.830
+A HashMap object associates
+keys with values.
+
+36
+00:02:16.830 --> 00:02:19.430
+In many languages this is called a map.
+
+37
+00:02:19.430 --> 00:02:22.980
+You might think of the key or
+legend in a map as you can see here.
+
+38
+00:02:22.980 --> 00:02:25.050
+The key helps in understanding the map.
+
+39
+00:02:25.050 --> 00:02:28.070
+You can look up the color in the key or
+legend.
+
+40
+00:02:28.070 --> 00:02:31.290
+And understand what
+the color means in the map.
+
+41
+00:02:31.290 --> 00:02:35.860
+In programming the concept is more
+mathematical than geographical.
+
+42
+00:02:35.860 --> 00:02:39.500
+The word map has meanings in both Math and
+Geography.
+
+43
+00:02:40.570 --> 00:02:45.090
+The key in an element in the domain that's
+being mapped to a value in the range.
+
+44
+00:02:45.090 --> 00:02:48.360
+In math, a function is
+sometimes called a Mapping, and
+
+45
+00:02:48.360 --> 00:02:51.490
+this expresses the ideas in
+the HashMap class as well.
+
+46
+00:02:52.580 --> 00:02:57.639
+In a HashMap, you look up a key, and
+you get the value associated with the key.
+
+47
+00:02:58.750 --> 00:03:02.720
+In an example illustrated here,
+we are counting word frequencies.
+
+48
+00:03:02.720 --> 00:03:04.680
+The word rainbow occurs 41 times.
+
+49
+00:03:04.680 --> 00:03:09.720
+So the integer value 41 is associated
+with the string key rainbow.
+
+50
+00:03:09.720 --> 00:03:13.870
+in Java the value returned by
+the call map.get("rainbow") is 41.
+
+51
+00:03:13.870 --> 00:03:17.650
+The value returned by
+map.get("truth") is 17,
+
+52
+00:03:17.650 --> 00:03:20.120
+indicating the string
+truth occurs 17 times.
+
+53
+00:03:21.260 --> 00:03:25.880
+A football occurs 23 times then 23 is
+the value associated with the key football
+
+54
+00:03:25.880 --> 00:03:29.710
+as we turn by the call
+map.get("football").
+
+55
+00:03:29.710 --> 00:03:32.530
+Wonderful occurs 23 times in
+our hypothetical example.
+
+56
+00:03:32.530 --> 00:03:34.546
+The keys in the map are unique but
+
+57
+00:03:34.546 --> 00:03:39.037
+it's possible to have the same value
+associated with different keys.
+
+58
+00:03:39.037 --> 00:03:42.803
+To use a HashMap you'll need to
+understand the operations it supports.
+
+59
+00:03:42.803 --> 00:03:47.212
+We'll use one HashMap to replace
+the two parallel ArrayLists.
+
+60
+00:03:47.212 --> 00:03:51.760
+Here is the code that uses one ArrayLists
+of strings and one ArrayLists of integers
+
+61
+00:03:51.760 --> 00:03:55.490
+with the .index of function used for
+associating integer values with strings.
+
+62
+00:03:56.640 --> 00:04:01.090
+The HashMap code also associates
+an integer value with the string key.
+
+63
+00:04:01.090 --> 00:04:03.580
+The key in the HashMap will be a string.
+
+64
+00:04:03.580 --> 00:04:04.810
+The value is an integer.
+
+65
+00:04:04.810 --> 00:04:08.050
+That's the number of times the string
+occurs in a file being processed.
+
+66
+00:04:09.380 --> 00:04:11.220
+To define a HashMap variable,
+
+67
+00:04:11.220 --> 00:04:14.890
+you'll need to specify the type
+of both the key and the value.
+
+68
+00:04:15.970 --> 00:04:20.040
+When calling new, you must specify
+the key and the value types as well.
+
+69
+00:04:20.040 --> 00:04:23.390
+The key is the first type and
+the value is the second type.
+
+70
+00:04:23.390 --> 00:04:27.390
+The code will determine if the key
+has never been seen before,
+
+71
+00:04:27.390 --> 00:04:28.944
+whether it's stored in the HashMap or not.
+
+72
+00:04:28.944 --> 00:04:33.463
+The method .containsKey on
+the map object returns a Boolean
+
+73
+00:04:33.463 --> 00:04:37.520
+indicating whether that key is in the map.
+
+74
+00:04:37.520 --> 00:04:42.063
+If it's not in the map, the value
+1 is put in the map with the key,
+
+75
+00:04:42.063 --> 00:04:44.056
+using the map method .put.
+
+76
+00:04:44.056 --> 00:04:45.935
+If the string is a key in the map,
+
+77
+00:04:45.935 --> 00:04:49.356
+meaning the string being
+processed has been seen before.
+
+78
+00:04:49.356 --> 00:04:54.369
+The value it shows you if the key is found
+using the .get method and then a new value
+
+79
+00:04:54.369 --> 00:04:59.190
+is stored for the key by calling map.put,
+with an updated value of one more.
+
+80
+00:05:00.390 --> 00:05:03.240
+In addition to accessing
+individual map keys and
+
+81
+00:05:03.240 --> 00:05:07.500
+values, we also need to access
+all the keys and values in a map.
+
+82
+00:05:07.500 --> 00:05:08.370
+Printing the strings and
+
+83
+00:05:08.370 --> 00:05:12.728
+frequencies when parallel arrays
+are used requires a typical indexing for
+
+84
+00:05:12.728 --> 00:05:17.750
+loop with the index used to access both
+strings and integers as shown here.
+
+85
+00:05:17.750 --> 00:05:22.110
+Printing all the key value pairs in the
+map requires looping over all the keys,
+
+86
+00:05:22.110 --> 00:05:24.660
+and getting the value
+associated with each key.
+
+87
+00:05:25.698 --> 00:05:29.670
+The method .keySet returns an interval
+you use to access each key in a loop.
+
+88
+00:05:29.670 --> 00:05:32.352
+This is similar to using .words or
+
+89
+00:05:32.352 --> 00:05:37.700
+dot .lines with the file resource or
+URL resource to access elements.
+
+90
+00:05:37.700 --> 00:05:41.020
+Or the .data method to access each
+string in a storage resource.
+
+91
+00:05:42.130 --> 00:05:44.430
+Iterating over the key set and
+calling get for
+
+92
+00:05:44.430 --> 00:05:46.910
+each key allows you to print
+the contents of a map.
+
+93
+00:05:48.310 --> 00:05:51.490
+Maps will allow you to modify
+the GladLib class more easily.
+
+94
+00:05:51.490 --> 00:05:54.450
+But maps are incredibly fast too.
+
+95
+00:05:54.450 --> 00:05:58.950
+When files are large, efficiency
+matters more than when they're small.
+
+96
+00:05:58.950 --> 00:06:02.580
+This concept of using efficient
+structures or code is important.
+
+97
+00:06:02.580 --> 00:06:07.120
+Computers are so fast that simple
+concepts lead to code that's fast enough
+
+98
+00:06:07.120 --> 00:06:08.630
+given how fast computers are today.
+
+99
+00:06:09.650 --> 00:06:11.930
+As you can see in
+the first row of the table,
+
+100
+00:06:11.930 --> 00:06:16.050
+counting how many times each word
+occurs in Shakespeare's Julius Caesar,
+
+101
+00:06:16.050 --> 00:06:20.215
+it's fast enough on a laptop computer,
+even using the parallel ArrayList.
+
+102
+00:06:21.380 --> 00:06:24.685
+With a bigger file like the sayings
+of Confucius, the code for
+
+103
+00:06:24.685 --> 00:06:26.668
+ArrayList is still under half a second.
+
+104
+00:06:26.668 --> 00:06:29.420
+Whereas the HashMap code
+is incredibly fast.
+
+105
+00:06:30.780 --> 00:06:34.280
+For the novel the Scarlet Letter,
+there are many more unique words and
+
+106
+00:06:34.280 --> 00:06:35.270
+total words.
+
+107
+00:06:35.270 --> 00:06:39.960
+But the HashMap code is still roughly ten
+times faster than the ArrayList code.
+
+108
+00:06:41.000 --> 00:06:45.603
+For a large file, like the King James
+version of the Bible with over 800,000
+
+109
+00:06:45.603 --> 00:06:50.733
+words and 32,000 different words, the
+ArrayList code takes more than 20 seconds,
+
+110
+00:06:50.733 --> 00:06:54.130
+while the HashMap code
+is under half a second.
+
+111
+00:06:54.130 --> 00:06:56.020
+That's more than 40 times faster.
+
+112
+00:06:57.100 --> 00:07:01.320
+Looking up keys in a map takes time,
+that's independent of the number of keys.
+
+113
+00:07:01.320 --> 00:07:03.460
+Roughly speaking this means
+getting the value for
+
+114
+00:07:03.460 --> 00:07:07.540
+a key in a map with a million keys,
+takes the same time
+
+115
+00:07:07.540 --> 00:07:12.620
+as looking up the value associated with
+the key in a map of just ten keys.
+
+116
+00:07:12.620 --> 00:07:16.810
+With an ArrayList you might have to look
+at all million elements in the ArrayList,
+
+117
+00:07:16.810 --> 00:07:18.310
+so HashMap is incredibly fast.
+
+118
+00:07:19.410 --> 00:07:23.040
+In later courses you'll study how
+the HashMap class can be so fast.
+
+119
+00:07:24.110 --> 00:07:27.127
+In this course you'll use
+HashMaps in many examples.
+
+120
+00:07:27.127 --> 00:07:27.805
+Happy coding.

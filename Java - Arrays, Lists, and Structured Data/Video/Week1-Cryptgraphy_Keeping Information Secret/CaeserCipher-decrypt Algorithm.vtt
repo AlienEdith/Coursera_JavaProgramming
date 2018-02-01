@@ -1,0 +1,415 @@
+WEBVTT
+
+1
+00:00:03.220 --> 00:00:08.100
+We'd like to automate the cracking or
+breaking of the CaesarCipher.
+
+2
+00:00:08.100 --> 00:00:13.200
+To do this, we'll rely on frequencies
+of letters in English text.
+
+3
+00:00:14.590 --> 00:00:17.290
+If you're encrypting a message
+in another language,
+
+4
+00:00:17.290 --> 00:00:19.690
+you'll need to use the frequencies
+from that language.
+
+5
+00:00:19.690 --> 00:00:21.020
+But the approach will be the same.
+
+6
+00:00:22.630 --> 00:00:25.570
+We'll write code to
+find the character that
+
+7
+00:00:25.570 --> 00:00:27.660
+occurs most frequently in
+the message being decrypted.
+
+8
+00:00:29.320 --> 00:00:31.308
+We'll assume this is the letter E,
+
+9
+00:00:31.308 --> 00:00:35.234
+since E occurs more frequently than
+any other letter in English text.
+
+10
+00:00:35.234 --> 00:00:40.641
+In Russian for example, the letter
+O occurs more frequently than E.
+
+11
+00:00:40.641 --> 00:00:45.120
+If our assumption about e is wrong,
+we won't decrypt the original message.
+
+12
+00:00:45.120 --> 00:00:48.880
+It's possible to use more than just E,
+but to rely on the frequencies of
+
+13
+00:00:48.880 --> 00:00:53.130
+all the letters, and use statistical
+approaches to break the CaesarCipher.
+
+14
+00:00:53.130 --> 00:00:57.960
+In some cases these approaches will
+break other encryption methods, though
+
+15
+00:00:57.960 --> 00:01:02.060
+not the methods used to encrypt data for
+online shopping and secure transactions.
+
+16
+00:01:04.690 --> 00:01:08.560
+Let's look at the code for
+decryption in two steps.
+
+17
+00:01:08.560 --> 00:01:11.870
+We need to count
+the occurrences of each letter,
+
+18
+00:01:11.870 --> 00:01:14.270
+A through Z,
+in the message we're encrypting.
+
+19
+00:01:15.710 --> 00:01:18.540
+We'll have code to scan in
+each letter of the text and
+
+20
+00:01:18.540 --> 00:01:21.080
+increment a counter for
+each of the 26 different letters.
+
+21
+00:01:23.110 --> 00:01:25.620
+Initially, all the counters are zero,
+
+22
+00:01:25.620 --> 00:01:28.250
+since we haven't started scanning
+the text letter by letter.
+
+23
+00:01:29.860 --> 00:01:35.190
+Each counter is numbered from zero to 25,
+because the counters are array elements.
+
+24
+00:01:37.090 --> 00:01:43.000
+The index from a string of 26 letters
+will helps us find the right index for
+
+25
+00:01:43.000 --> 00:01:45.159
+the counter we'll increment
+as we scan the text.
+
+26
+00:01:46.880 --> 00:01:48.400
+As we scan the message,
+
+27
+00:01:48.400 --> 00:01:53.600
+looking at each character, we'll increment
+the counter at index seven for H.
+
+28
+00:01:54.690 --> 00:01:57.260
+Then as we scan, I will increment
+the counter at index eight,
+
+29
+00:01:57.260 --> 00:02:00.630
+which is the index of I
+in our alphabet string.
+
+30
+00:02:02.090 --> 00:02:06.220
+We won't increment for
+the comma, or for the space.
+
+31
+00:02:06.220 --> 00:02:09.326
+Then we'll increment the counter
+at index three for the D.
+
+32
+00:02:09.326 --> 00:02:13.250
+The counter at index 14 for the O.
+
+33
+00:02:15.735 --> 00:02:19.330
+We won't increment for the space because
+space doesn't occur in the alphabet.
+
+34
+00:02:21.070 --> 00:02:24.630
+Then we'll increment
+the counter index 24 for Y.
+
+35
+00:02:27.200 --> 00:02:30.730
+And we'll set the counter
+at index 14 to two when
+
+36
+00:02:30.730 --> 00:02:33.710
+we scan the second O in the message.
+
+37
+00:02:35.280 --> 00:02:40.890
+When we're done scanning every character,
+we'll have these values for each counter.
+
+38
+00:02:40.890 --> 00:02:42.610
+If you look carefully at these values,
+
+39
+00:02:42.610 --> 00:02:45.800
+you see that our decryption
+method is likely to fail.
+
+40
+00:02:45.800 --> 00:02:49.210
+The value of the counter
+with index four is zero.
+
+41
+00:02:49.210 --> 00:02:53.340
+There are no Es in this message,
+but this is a very unusual message.
+
+42
+00:02:53.340 --> 00:02:56.960
+Now, we'll look at the code for this idea.
+
+43
+00:02:56.960 --> 00:03:00.100
+We scanned the message character by
+character, using a standard for loop.
+
+44
+00:03:01.530 --> 00:03:06.270
+We find where the character occurs in
+a string of each letter in the alphabet.
+
+45
+00:03:06.270 --> 00:03:08.920
+So that E will be found in index four.
+
+46
+00:03:08.920 --> 00:03:13.135
+Notice that we converted the characters in
+the message being decrypted to lowercase.
+
+47
+00:03:14.340 --> 00:03:18.480
+We used the index in the alphabet to
+increment the corresponding counter
+
+48
+00:03:18.480 --> 00:03:20.950
+as part of decrypting the message.
+
+49
+00:03:20.950 --> 00:03:24.230
+If the character wasn't in
+the letters of the alphabet
+
+50
+00:03:24.230 --> 00:03:27.230
+the .index of method
+returned negative one.
+
+51
+00:03:27.230 --> 00:03:29.120
+And we don't increment any counter.
+
+52
+00:03:30.760 --> 00:03:35.080
+The code that uses the idea E occurring
+most frequently, is straightforward
+
+53
+00:03:35.080 --> 00:03:38.160
+developed from the ideas, algorithm,
+and code you've just seen.
+
+54
+00:03:39.250 --> 00:03:41.600
+As you can see, the code isn't very long.
+
+55
+00:03:41.600 --> 00:03:45.920
+But we've created two helper methods, and
+relied on the CaesarCipher class to help.
+
+56
+00:03:47.520 --> 00:03:51.220
+We've called a method countLetters,
+which we just discussed.
+
+57
+00:03:51.220 --> 00:03:55.560
+This method will count the occurrences of
+every character in the string encrypted,
+
+58
+00:03:55.560 --> 00:03:59.920
+with A being stored in the first,
+or index zero location of the array
+
+59
+00:04:01.020 --> 00:04:04.970
+returned by the function, and
+referenced here by the variable freqs.
+
+60
+00:04:06.510 --> 00:04:10.860
+Then we call a method maxIndex
+which will return the index
+
+61
+00:04:10.860 --> 00:04:13.980
+of their entry infreqs
+that is the largest.
+
+62
+00:04:13.980 --> 00:04:19.140
+The location we will assume
+is where the E was shifted.
+
+63
+00:04:20.650 --> 00:04:23.440
+We'll find that the distance
+from this location to E.
+
+64
+00:04:23.440 --> 00:04:24.770
+E has index 4.
+
+65
+00:04:24.770 --> 00:04:29.610
+Since we start with zero for A,
+and then get B, C, D, E, for one,
+
+66
+00:04:29.610 --> 00:04:32.220
+two, three, four respectively.
+
+67
+00:04:33.520 --> 00:04:37.850
+If the maximal index is less than four,
+we'll need to wrap around from 26,
+
+68
+00:04:37.850 --> 00:04:40.160
+to find the shift used for E.
+
+69
+00:04:41.650 --> 00:04:46.992
+If the value dkey was used to encrypt,
+then 26 minus dkey
+
+70
+00:04:46.992 --> 00:04:52.347
+is used to decrypt, and
+we return the decryptive string.
+
+71
+00:04:52.347 --> 00:04:56.279
+You'll be ready to use your programming
+knowledge to finish the task of
+
+72
+00:04:56.279 --> 00:04:57.073
+decrypting.
+
+73
+00:04:57.073 --> 00:05:01.252
+And then apply this knowledge in the mini
+project with a different cipher.
+
+74
+00:05:01.252 --> 00:05:04.100
+But there's some details
+we want to highlight.
+
+75
+00:05:04.100 --> 00:05:09.310
+The array freqs in the code we just saw
+has a relationship between the index and
+
+76
+00:05:09.310 --> 00:05:10.570
+the value in the array.
+
+77
+00:05:10.570 --> 00:05:14.681
+For example,
+freqs of eight is how often I occurs,
+
+78
+00:05:14.681 --> 00:05:18.520
+since I is the ninth letter and
+has index eight.
+
+79
+00:05:18.520 --> 00:05:21.387
+Remember, we start with index zero.
+
+80
+00:05:21.387 --> 00:05:25.914
+When looking for a maximum value,
+as with the maxIndex that we called,
+
+81
+00:05:25.914 --> 00:05:28.479
+and whose implementation you see here,
+
+82
+00:05:28.479 --> 00:05:33.690
+we return the index of the largest value,
+not the largest value itself.
+
+83
+00:05:33.690 --> 00:05:36.150
+We use the index to find
+the distance from E.
+
+84
+00:05:37.370 --> 00:05:42.399
+Using the existing CaesarCipher class made
+decryption much more straightforward.
+
+85
+00:05:43.790 --> 00:05:47.690
+In general, it is a good idea to use
+code that has already been developed and
+
+86
+00:05:47.690 --> 00:05:50.080
+tested, rather than reinventing it.
+
+87
+00:05:50.080 --> 00:05:50.870
+Have fun coding.
