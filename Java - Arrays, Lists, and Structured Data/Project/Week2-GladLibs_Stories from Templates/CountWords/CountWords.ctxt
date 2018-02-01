@@ -1,0 +1,23 @@
+#BlueJ class context
+comment0.target=CountWords
+comment1.params=
+comment1.target=CountWords()
+comment10.params=
+comment10.target=void\ randomTester()
+comment2.params=
+comment2.target=int\ getCount()
+comment3.params=
+comment3.target=java.lang.String\ getRandomWord()
+comment4.params=source
+comment4.target=void\ readWords(java.lang.String)
+comment5.params=list\ size\ word
+comment5.target=boolean\ contains(java.lang.String[],\ int,\ java.lang.String)
+comment6.params=
+comment6.target=int\ countDifferentArray()
+comment7.params=
+comment7.target=int\ countDifferentArrayList()
+comment8.params=
+comment8.target=void\ tester()
+comment9.params=words
+comment9.target=java.lang.String\ getRandomWord(java.lang.String[])
+numComments=11
